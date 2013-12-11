@@ -82,41 +82,69 @@ Public Class Game1
         If GamePad.GetState(PlayerIndex.One).Buttons.Back = ButtonState.Pressed Then
             Me.Exit()
         End If
+        mytexture = Me.Content.Load(Of Texture2D)("SpriteOneStill")
 
         'spriteposition += spritespeed * gameTime.ElapsedGameTime.TotalSeconds
 
-            Dim MaxX As Integer = graphics.GraphicsDevice.Viewport.Width - mytexture.Width
-            Dim MinX As Integer = 0
-            Dim MaxY As Integer = graphics.GraphicsDevice.Viewport.Height - mytexture.Height
-            Dim miny As Integer = 0
+        Dim MaxX As Integer = graphics.GraphicsDevice.Viewport.Width - mytexture.Width
+        Dim MinX As Integer = 0
+        Dim MaxY As Integer = graphics.GraphicsDevice.Viewport.Height - mytexture.Height
+        Dim miny As Integer = 0
 
-        If Keyboard.GetState(PlayerIndex.One).Item(Keys.W) = KeyState.Down Then
-            mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
-            spritespeed.Y += 2
-            spriteposition.Y -= 5
+        If mytexture.Bounds.Intersects(myGround.Bounds) = True Then
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.W) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
+                spritespeed.Y += 2
+                spriteposition.Y -= 5
+            End If
+
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.S) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOneCrouch")
+            End If
+
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.D) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
+                spritespeed.X += 2
+                spriteposition.X += 5
+            End If
+
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.A) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
+                spritespeed.X += 2
+                spriteposition.X -= 5
+            End If
+
+        Else
+
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.W) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
+                spritespeed.Y += 2
+                spriteposition.Y -= 5
+            End If
+
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.S) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
+                spritespeed.Y += 2
+                spriteposition.Y += 5
+            End If
+
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.D) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
+                spritespeed.X += 2
+                spriteposition.X += 5
+            End If
+
+            If Keyboard.GetState(PlayerIndex.One).Item(Keys.A) = KeyState.Down Then
+                mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
+                spritespeed.X += 2
+                spriteposition.X -= 5
+            End If
+
         End If
 
-        If Keyboard.GetState(PlayerIndex.One).Item(Keys.S) = KeyState.Down Then
-            mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
-            spritespeed.Y += 2
-            spriteposition.Y += 5
-        End If
 
-        If Keyboard.GetState(PlayerIndex.One).Item(Keys.D) = KeyState.Down Then
-            mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
-            spritespeed.X += 2
-            spriteposition.X += 5
-        End If
 
-        If Keyboard.GetState(PlayerIndex.One).Item(Keys.A) = KeyState.Down Then
-            mytexture = Me.Content.Load(Of Texture2D)("SpriteOne")
-            spritespeed.X += 2
-            spriteposition.X -= 5
-        End If
 
-        If mytexture.Bounds.Intersects(myGround.Bounds) Then
-            mytexture = Me.Content.Load(Of Texture2D)("SpriteOneStill")
-        End If
 
 
 
