@@ -70,6 +70,7 @@
             Select Case intShapeProvider
                 Case 1
                     If intClickCount = 1 Then
+                    ' This does not work, fix it!
                         intCoords.SetValue(e.X, 1)
                         intCoords.SetValue(e.Y, 2)
                     ElseIf intClickCount = 2 Then
