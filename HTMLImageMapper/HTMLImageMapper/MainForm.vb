@@ -98,7 +98,7 @@
                 intClickCount = 0
             End If
         Catch ex As Exception
-            MessageBox.Show("Something's fucky..." & vbNewLine & ex.Message, "oops")
+            MessageBox.Show("Something's screwy..." & vbNewLine & ex.Message, "oops")
         End Try
         
 
