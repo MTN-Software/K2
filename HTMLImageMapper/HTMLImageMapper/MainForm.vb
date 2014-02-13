@@ -69,6 +69,7 @@
         Try
             Select Case intShapeProvider
                 Case 1
+                    ReDim intCoords(4)
                     If intClickCount = 1 Then
                     ' This does not work, fix it!
                         intCoords.SetValue(e.X, 1)
@@ -145,11 +146,21 @@
     End Sub
 
     Private Sub btnGenImageMap_Click(sender As Object, e As EventArgs) Handles btnGenImageMap.Click
-        Dim strMapName As String = MsgBox("Map Name?", MsgBoxStyle.OkOnly, "MTN HTML Image Mapper - Generator")
+        Dim strMapName As String
+        Dim strHref As String
+        frmNamePrompt.ShowDialog()
+
+        strHref = frmNamePrompt.txtHref.Text
+        strMapName = frmNamePrompt.txtName.Text
         Dim strRectMap As String = "<map name="" " & strMapName & " "">" & _
-                                   vbTab & "<area shape=""rect"" coords=""" & intCoords(1).ToString() & "," & intCoords(2).ToString() & "," & intCoords(3).ToString() & "," & intCoords(4).ToString() & """  href=""example.htm"" alt=""Something""/>" & _
-                                   "</map>"
-        MessageBox.Show(strRectMap, "MTN HTML Image Mapper - Code", MessageBoxButtons.OK)
+                                   vbTab & "<area shape=""rect"" coords=""" & intCoords(1).ToString() & "," & intCoords(2).ToString() & "," & intCoords(3).ToString() & "," & intCoords(4).ToString() & """  href=""" & strHref & """ alt=""Something""/>" & _
+                                   vbNewLine & "</map>"
+        Dim dlgCopy As DialogResult = MessageBox.Show(strRectMap & vbNewLine & "Pressing ok will set the above text to your clipboard", "MTN HTML Image Mapper - Code", MessageBoxButtons.OK)
+
+        If dlgCopy = Windows.Forms.DialogResult.OK Then
+            My.Computer.Clipboard.SetText(strRectMap)
+        End If
+
 
     End Sub
 End Class
