@@ -71,7 +71,6 @@
                 Case 1
                     ReDim intCoords(4)
                     If intClickCount = 1 Then
-                    ' This does not work, fix it!
                         intCoords.SetValue(e.X, 1)
                         intCoords.SetValue(e.Y, 2)
                     ElseIf intClickCount = 2 Then
@@ -100,7 +99,7 @@
                 intClickCount = 0
             End If
         Catch ex As Exception
-            MessageBox.Show("Something's screwy..." & vbNewLine & ex.Message, "oops")
+            MessageBox.Show("Something's fucky..." & vbNewLine & ex.Message, "oops")
         End Try
         
 
@@ -162,5 +161,9 @@
         End If
 
 
+    End Sub
+
+    Private Sub mnuAbout_Click(sender As Object, e As EventArgs) Handles mnuAbout.Click
+        frmAbout.Visible = True
     End Sub
 End Class

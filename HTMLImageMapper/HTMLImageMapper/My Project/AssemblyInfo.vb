@@ -9,9 +9,9 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("HTMLImageMapper")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("HTMLImageMapper")> 
+<Assembly: AssemblyDescription("New from MTN Software, an HTML Image Mapper for Windows!  As always, it is open source and hosted on our github page.  Complaints, suggestions, and bug reports can go here -->mtnsoft.Spam@live.com")> 
+<Assembly: AssemblyCompany("MTN Software")> 
+<Assembly: AssemblyProduct("MTN HTML Image Mapper")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014")> 
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.2.0.0")> 
+<Assembly: AssemblyFileVersion("1.2.0.4")> 

@@ -109,13 +109,13 @@ Partial Class frmMain
         'mnuAbout
         '
         Me.mnuAbout.Name = "mnuAbout"
-        Me.mnuAbout.Size = New System.Drawing.Size(107, 22)
+        Me.mnuAbout.Size = New System.Drawing.Size(152, 22)
         Me.mnuAbout.Text = "About"
         '
         'mnuExit
         '
         Me.mnuExit.Name = "mnuExit"
-        Me.mnuExit.Size = New System.Drawing.Size(107, 22)
+        Me.mnuExit.Size = New System.Drawing.Size(152, 22)
         Me.mnuExit.Text = "Exit"
         '
         'mnuEdit
