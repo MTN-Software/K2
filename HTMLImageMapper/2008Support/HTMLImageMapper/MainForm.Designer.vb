@@ -23,36 +23,38 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Me.btnRect = New System.Windows.Forms.Button()
-        Me.btnCirc = New System.Windows.Forms.Button()
-        Me.btnPoly = New System.Windows.Forms.Button()
-        Me.mnuStrip = New System.Windows.Forms.MenuStrip()
-        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuAbout = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuExit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuView = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MouseCoordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnExit = New System.Windows.Forms.Button()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.btnNew = New System.Windows.Forms.ToolStripButton()
-        Me.btnOpen = New System.Windows.Forms.ToolStripButton()
-        Me.btnSave = New System.Windows.Forms.ToolStripButton()
-        Me.toolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnCopy = New System.Windows.Forms.ToolStripButton()
-        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnHelp = New System.Windows.Forms.ToolStripButton()
-        Me.picImage = New System.Windows.Forms.PictureBox()
-        Me.btnGenImageMap = New System.Windows.Forms.Button()
-        Me.btnOpenImg = New System.Windows.Forms.Button()
-        Me.statStrip = New System.Windows.Forms.StatusStrip()
-        Me.lblMouseX = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lblMouseY = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lblPicMousePosX = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lblPicMousePosY = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btnRect = New System.Windows.Forms.Button
+        Me.btnCirc = New System.Windows.Forms.Button
+        Me.btnPoly = New System.Windows.Forms.Button
+        Me.mnuStrip = New System.Windows.Forms.MenuStrip
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAbout = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuExit = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuView = New System.Windows.Forms.ToolStripMenuItem
+        Me.MouseCoordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.btnExit = New System.Windows.Forms.Button
+        Me.toolStrip = New System.Windows.Forms.ToolStrip
+        Me.btnNew = New System.Windows.Forms.ToolStripButton
+        Me.btnOpen = New System.Windows.Forms.ToolStripButton
+        Me.btnSave = New System.Windows.Forms.ToolStripButton
+        Me.toolStripSeparator = New System.Windows.Forms.ToolStripSeparator
+        Me.btnCopy = New System.Windows.Forms.ToolStripButton
+        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
+        Me.btnHelp = New System.Windows.Forms.ToolStripButton
+        Me.picImage = New System.Windows.Forms.PictureBox
+        Me.btnGenImageMap = New System.Windows.Forms.Button
+        Me.btnOpenImg = New System.Windows.Forms.Button
+        Me.statStrip = New System.Windows.Forms.StatusStrip
+        Me.lblMouseX = New System.Windows.Forms.ToolStripStatusLabel
+        Me.lblMouseY = New System.Windows.Forms.ToolStripStatusLabel
+        Me.lblPicMousePosX = New System.Windows.Forms.ToolStripStatusLabel
+        Me.lblPicMousePosY = New System.Windows.Forms.ToolStripStatusLabel
+        Me.lblXOYO = New System.Windows.Forms.Label
+        Me.lblXTYT = New System.Windows.Forms.Label
         Me.mnuStrip.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
+        Me.toolStrip.SuspendLayout()
         CType(Me.picImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.statStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -155,14 +157,14 @@ Partial Class frmMain
         Me.btnExit.Text = "E&xit"
         Me.btnExit.UseVisualStyleBackColor = True
         '
-        'ToolStrip1
+        'toolStrip
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnOpen, Me.btnSave, Me.toolStripSeparator, Me.btnCopy, Me.toolStripSeparator1, Me.btnHelp})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(592, 25)
-        Me.ToolStrip1.TabIndex = 5
-        Me.ToolStrip1.Text = "ToolStrip1"
+        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnOpen, Me.btnSave, Me.toolStripSeparator, Me.btnCopy, Me.toolStripSeparator1, Me.btnHelp})
+        Me.toolStrip.Location = New System.Drawing.Point(0, 24)
+        Me.toolStrip.Name = "toolStrip"
+        Me.toolStrip.Size = New System.Drawing.Size(592, 25)
+        Me.toolStrip.TabIndex = 5
+        Me.toolStrip.Text = "ToolStrip1"
         '
         'btnNew
         '
@@ -222,8 +224,8 @@ Partial Class frmMain
         'picImage
         '
         Me.picImage.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.picImage.Location = New System.Drawing.Point(12, 52)
         Me.picImage.Name = "picImage"
         Me.picImage.Size = New System.Drawing.Size(487, 265)
@@ -284,16 +286,36 @@ Partial Class frmMain
         Me.lblPicMousePosY.Name = "lblPicMousePosY"
         Me.lblPicMousePosY.Size = New System.Drawing.Size(0, 17)
         '
+        'lblXOYO
+        '
+        Me.lblXOYO.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblXOYO.AutoSize = True
+        Me.lblXOYO.Location = New System.Drawing.Point(505, 208)
+        Me.lblXOYO.Name = "lblXOYO"
+        Me.lblXOYO.Size = New System.Drawing.Size(0, 13)
+        Me.lblXOYO.TabIndex = 10
+        '
+        'lblXTYT
+        '
+        Me.lblXTYT.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblXTYT.AutoSize = True
+        Me.lblXTYT.Location = New System.Drawing.Point(505, 250)
+        Me.lblXTYT.Name = "lblXTYT"
+        Me.lblXTYT.Size = New System.Drawing.Size(0, 13)
+        Me.lblXTYT.TabIndex = 11
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(592, 342)
+        Me.Controls.Add(Me.lblXTYT)
+        Me.Controls.Add(Me.lblXOYO)
         Me.Controls.Add(Me.statStrip)
         Me.Controls.Add(Me.btnOpenImg)
         Me.Controls.Add(Me.btnGenImageMap)
         Me.Controls.Add(Me.picImage)
-        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.toolStrip)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.btnPoly)
         Me.Controls.Add(Me.btnCirc)
@@ -301,11 +323,12 @@ Partial Class frmMain
         Me.Controls.Add(Me.mnuStrip)
         Me.MainMenuStrip = Me.mnuStrip
         Me.Name = "frmMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MTN HTML Image Mapper"
         Me.mnuStrip.ResumeLayout(False)
         Me.mnuStrip.PerformLayout()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
+        Me.toolStrip.ResumeLayout(False)
+        Me.toolStrip.PerformLayout()
         CType(Me.picImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.statStrip.ResumeLayout(False)
         Me.statStrip.PerformLayout()
@@ -323,7 +346,7 @@ Partial Class frmMain
     Friend WithEvents mnuEdit As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuView As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents btnExit As System.Windows.Forms.Button
-    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents toolStrip As System.Windows.Forms.ToolStrip
     Friend WithEvents btnNew As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnOpen As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnSave As System.Windows.Forms.ToolStripButton
@@ -341,5 +364,7 @@ Partial Class frmMain
     Friend WithEvents lblMouseY As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblPicMousePosX As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblPicMousePosY As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents lblXOYO As System.Windows.Forms.Label
+    Friend WithEvents lblXTYT As System.Windows.Forms.Label
 
 End Class
