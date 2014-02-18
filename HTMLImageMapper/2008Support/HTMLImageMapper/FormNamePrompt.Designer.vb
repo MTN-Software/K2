@@ -22,6 +22,7 @@ Partial Class frmNamePrompt
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNamePrompt))
         Me.txtHref = New System.Windows.Forms.TextBox
         Me.txtName = New System.Windows.Forms.TextBox
         Me.lblName = New System.Windows.Forms.Label
@@ -158,6 +159,7 @@ Partial Class frmNamePrompt
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.txtHref)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmNamePrompt"
         Me.Text = "MTN HTML Image Mapper - Prompt"
         Me.ResumeLayout(False)

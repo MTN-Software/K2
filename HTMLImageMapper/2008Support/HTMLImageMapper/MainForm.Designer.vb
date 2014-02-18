@@ -321,6 +321,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnCirc)
         Me.Controls.Add(Me.btnRect)
         Me.Controls.Add(Me.mnuStrip)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.mnuStrip
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
