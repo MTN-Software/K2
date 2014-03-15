@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mnuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,8 @@
             this.mnuPaste = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHelp = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuNewFolder = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCode = new System.Windows.Forms.RichTextBox();
             this.treeProject = new System.Windows.Forms.TreeView();
@@ -58,9 +61,6 @@
             this.ListViewLargeImageList = new System.Windows.Forms.ImageList(this.components);
             this.ListViewSmallImageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuNewFolder = new System.Windows.Forms.ToolStripButton();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -87,16 +87,22 @@
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "File";
             // 
+            // newProjectToolStripMenuItem
+            // 
+            this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.newProjectToolStripMenuItem.Text = "New Project";
+            // 
             // mnuFHelp
             // 
             this.mnuFHelp.Name = "mnuFHelp";
-            this.mnuFHelp.Size = new System.Drawing.Size(152, 22);
+            this.mnuFHelp.Size = new System.Drawing.Size(138, 22);
             this.mnuFHelp.Text = "Help";
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuExit.Size = new System.Drawing.Size(138, 22);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -184,6 +190,7 @@
             this.mnuOpen.Name = "mnuOpen";
             this.mnuOpen.Size = new System.Drawing.Size(23, 22);
             this.mnuOpen.Text = "&Open";
+            this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
             // 
             // mnuSave
             // 
@@ -193,6 +200,7 @@
             this.mnuSave.Name = "mnuSave";
             this.mnuSave.Size = new System.Drawing.Size(23, 22);
             this.mnuSave.Text = "&Save";
+            this.mnuSave.Click += new System.EventHandler(this.mnuSave_Click);
             // 
             // mnuPrint
             // 
@@ -248,6 +256,21 @@
             this.mnuHelp.Name = "mnuHelp";
             this.mnuHelp.Size = new System.Drawing.Size(23, 22);
             this.mnuHelp.Text = "He&lp";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mnuNewFolder
+            // 
+            this.mnuNewFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.mnuNewFolder.Image = ((System.Drawing.Image)(resources.GetObject("mnuNewFolder.Image")));
+            this.mnuNewFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuNewFolder.Name = "mnuNewFolder";
+            this.mnuNewFolder.Size = new System.Drawing.Size(71, 22);
+            this.mnuNewFolder.Text = "New Folder";
+            this.mnuNewFolder.Click += new System.EventHandler(this.mnuNewFolder_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -319,33 +342,12 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(136, 282);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(136, 257);
             this.toolStripContainer1.Location = new System.Drawing.Point(3, 3);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(136, 282);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // newProjectToolStripMenuItem
-            // 
-            this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
-            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newProjectToolStripMenuItem.Text = "New Project";
-            // 
-            // mnuNewFolder
-            // 
-            this.mnuNewFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.mnuNewFolder.Image = ((System.Drawing.Image)(resources.GetObject("mnuNewFolder.Image")));
-            this.mnuNewFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mnuNewFolder.Name = "mnuNewFolder";
-            this.mnuNewFolder.Size = new System.Drawing.Size(71, 22);
-            this.mnuNewFolder.Text = "New Folder";
-            this.mnuNewFolder.Click += new System.EventHandler(this.mnuNewFolder_Click);
             // 
             // frmMain
             // 

@@ -100,6 +100,27 @@ namespace Intro_To_Business_Project
             tvRoot = this.treeProject.Nodes.Add("Root");
         }
 
+        private void mnuSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openf = new OpenFileDialog();
+            string fileName = string.Empty;
+
+            openf.Filter = "HTML (.htm)|*.htm*|CSS (.css)|*.css|XML (.xml)|*.xml|JavaScript (.js)|*.js|All Files (*.*)|*.*";
+            openf.FilterIndex = 1;
+            openf.Multiselect = true;
+            openf.InitialDirectory = "C:";
+
+            openf.ShowDialog();
+
+            fileName = openf.FileName;
+            txtCode.Text = openf.OpenFile().ToString();
+        }
+
 
     }
 }
