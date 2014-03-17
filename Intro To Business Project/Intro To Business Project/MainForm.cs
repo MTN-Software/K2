@@ -8,14 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace Intro_To_Business_Project
 {
+    
     public partial class frmMain : Form
     {
-        bool inTag;
+        //bool inTag;
         TreeNode tvNode;
         TreeNode tvRoot;
+        static int curPosition;
         public frmMain()
         {
             InitializeComponent();
@@ -29,6 +32,43 @@ namespace Intro_To_Business_Project
         // Dear God this code is messy.
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
+            //curPosition = txtCode.Text.IndexOf(txtCode.SelectedText);
+
+            Regex rgx = new Regex("(<\\S*\\s\\S*>|<\\S*>)");     // Uncomment this later
+            //Regex rgx = new Regex("(If|Next|Else)");
+            foreach (Match index in rgx.Matches(txtCode.Text))
+            {
+                txtCode.Select(index.Index, index.Length);
+                txtCode.SelectionColor = Color.Blue;
+                txtCode.Select(index.Length + 1, index.Length + 1);
+                txtCode.SelectionColor = Color.Black;
+            }
+
+            curPosition = txtCode.Text.Length;
+            txtCode.Select(curPosition, curPosition);
+
+            #region comment
+            /*try
+            {
+                
+                /*MatchCollection matches = Regex.Matches(txtCode.Text, "(<\\S*\\s\\S*>|<\\S*>)"); //Find tags
+                foreach (Match mMatch in matches)
+                {
+                    Console.WriteLine(mMatch.Value); 
+                    
+                }*/
+                
+                
+            /*}
+            catch (Exception)
+            {
+
+                Console.WriteLine("oops\n");
+                
+            }
+           
+
+            int selected = txtCode.Text.IndexOf(txtCode.SelectedText);
             for (int i = 0; i < txtCode.Lines.Length; i++)
             {
                 string text = txtCode.Lines[i];
@@ -37,7 +77,7 @@ namespace Intro_To_Business_Project
 
                 //txtCode.Select(txtCode.Text.Length, txtCode.Text.Length);
 
-                if (txtCode.Text.Contains("<") & txtCode.Text.Contains(">"))
+                if (text.Contains("<") & text.Contains(">"))
                 {
                     if (!inTag)
                     {
@@ -67,7 +107,7 @@ namespace Intro_To_Business_Project
                 //txtCode.Select(txtCode.Text.Length, txtCode.Text.Length);
                 //txtCode.SelectionColor = Color.Black;
                 //}
-                txtCode.Select(txtCode.Text.Length, txtCode.Text.Length);
+                txtCode.Select(selected + 1, selected + 1);
             }
             //private Color colorForLine(string line)
             //{
@@ -78,10 +118,13 @@ namespace Intro_To_Business_Project
             //    /*if(line.Contains("[ERROR]", StringComparison.InvariantCultureIgnoreCase))
             //    {
             //        return Color.Red;
-            //    } */
+            //    } 
 
             //    return Color.Black;
             //}
+            */
+#endregion
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -118,7 +161,24 @@ namespace Intro_To_Business_Project
             openf.ShowDialog();
 
             fileName = openf.FileName;
-            txtCode.Text = openf.OpenFile().ToString();
+            System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
+
+            txtCode.Text = openFile.ReadToEnd();
+        }
+
+        private void txtCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            //curPosition = txtCode.SelectedText.Length;
+        }
+
+        private void txtCode_KeyUp(object sender, KeyEventArgs e)
+        {
+            //curPosition = txtCode.Text.IndexOf(txtCode.SelectedText);
+        }
+
+        private void txtCode_Enter(object sender, EventArgs e)
+        {
+            //curPosition = txtCode.s
         }
 
 

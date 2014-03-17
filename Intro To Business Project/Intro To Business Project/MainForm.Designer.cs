@@ -300,6 +300,9 @@
             this.txtCode.TabIndex = 0;
             this.txtCode.Text = "";
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
+            this.txtCode.Enter += new System.EventHandler(this.txtCode_Enter);
+            this.txtCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyDown);
+            this.txtCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyUp);
             // 
             // treeProject
             // 
