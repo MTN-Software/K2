@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using Intro_To_Business_Project;
 
 namespace Intro_To_Business_Project
 {
@@ -19,6 +20,7 @@ namespace Intro_To_Business_Project
         TreeNode tvNode;
         TreeNode tvRoot;
         static int curPosition;
+        Highligher highlight = new Highligher();
         public frmMain()
         {
             InitializeComponent();
@@ -32,20 +34,14 @@ namespace Intro_To_Business_Project
         // Dear God this code is messy.
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
+            highlight.DemoHighlight(txtCode);
             //curPosition = txtCode.Text.IndexOf(txtCode.SelectedText);
+            
+            //highlight.DemoHighlight(txtCode);
+           
 
-            Regex rgx = new Regex("(<\\S*\\s\\S*>|<\\S*>)");     // Uncomment this later
-            //Regex rgx = new Regex("(If|Next|Else)");
-            foreach (Match index in rgx.Matches(txtCode.Text))
-            {
-                txtCode.Select(index.Index, index.Length);
-                txtCode.SelectionColor = Color.Blue;
-                txtCode.Select(index.Length + 1, index.Length + 1);
-                txtCode.SelectionColor = Color.Black;
-            }
-
-            curPosition = txtCode.Text.Length;
-            txtCode.Select(curPosition, curPosition);
+            //curPosition = txtCode.Text.Length;
+            //txtCode.Select(curPosition, curPosition);
 
             #region comment
             /*try
@@ -168,17 +164,26 @@ namespace Intro_To_Business_Project
 
         private void txtCode_KeyDown(object sender, KeyEventArgs e)
         {
-            //curPosition = txtCode.SelectedText.Length;
+            // <Debug Code>
+            //lblCurPos.Text =  "Cursor Position: " + txtCode.SelectionStart.ToString();
+            highlight.updateSelect(txtCode);
+            // </Debug Code>
+            
         }
 
         private void txtCode_KeyUp(object sender, KeyEventArgs e)
         {
+            // <Debug Code>
+            lblCurPos.Text = "Cursor Position: " + txtCode.SelectionStart.ToString();
+            
+            // </Debug Code>
             //curPosition = txtCode.Text.IndexOf(txtCode.SelectedText);
         }
 
         private void txtCode_Enter(object sender, EventArgs e)
         {
             //curPosition = txtCode.s
+
         }
 
 

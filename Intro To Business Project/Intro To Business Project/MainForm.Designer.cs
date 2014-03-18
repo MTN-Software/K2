@@ -61,6 +61,8 @@
             this.ListViewLargeImageList = new System.Windows.Forms.ImageList(this.components);
             this.ListViewSmallImageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblCurPos = new System.Windows.Forms.ToolStripLabel();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -167,7 +169,9 @@
             this.toolStripSeparator1,
             this.mnuHelp,
             this.toolStripSeparator2,
-            this.mnuNewFolder});
+            this.mnuNewFolder,
+            this.toolStripSeparator3,
+            this.lblCurPos});
             this.mnuTools.Location = new System.Drawing.Point(0, 24);
             this.mnuTools.Name = "mnuTools";
             this.mnuTools.Size = new System.Drawing.Size(702, 25);
@@ -352,6 +356,17 @@
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblCurPos
+            // 
+            this.lblCurPos.Name = "lblCurPos";
+            this.lblCurPos.Size = new System.Drawing.Size(91, 22);
+            this.lblCurPos.Text = "Cursor Position:";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,6 +425,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton mnuNewFolder;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel lblCurPos;
     }
 }
 
