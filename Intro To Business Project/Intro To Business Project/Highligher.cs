@@ -30,7 +30,7 @@ namespace Intro_To_Business_Project
                 rtb.Select(startIndex, endIndex);
                 rtb.SelectionColor = Color.Blue;
                 //rtb.SelectionStart = StartPos;
-                rtb.SelectionStart = StartPos + 1;
+                rtb.SelectionStart = StartPos;
                 rtb.SelectionColor = Color.Black;
             }
 
