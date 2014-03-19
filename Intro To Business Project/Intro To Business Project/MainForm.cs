@@ -186,6 +186,11 @@ namespace Intro_To_Business_Project
 
         }
 
+        private void txtCode_SelectionChanged(object sender, EventArgs e)
+        {
+            txtCode.SelectionColor = Color.Black;
+        }
+
 
     }
 }

@@ -54,6 +54,8 @@
             this.mnuHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuNewFolder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblCurPos = new System.Windows.Forms.ToolStripLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCode = new System.Windows.Forms.RichTextBox();
             this.treeProject = new System.Windows.Forms.TreeView();
@@ -61,8 +63,6 @@
             this.ListViewLargeImageList = new System.Windows.Forms.ImageList(this.components);
             this.ListViewSmallImageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.lblCurPos = new System.Windows.Forms.ToolStripLabel();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -276,13 +276,24 @@
             this.mnuNewFolder.Text = "New Folder";
             this.mnuNewFolder.Click += new System.EventHandler(this.mnuNewFolder_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblCurPos
+            // 
+            this.lblCurPos.Name = "lblCurPos";
+            this.lblCurPos.Size = new System.Drawing.Size(91, 22);
+            this.lblCurPos.Text = "Cursor Position:";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.txtCode, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.treeProject, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtCode, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -295,6 +306,7 @@
             // txtCode
             // 
             this.txtCode.AcceptsTab = true;
+            this.txtCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCode.EnableAutoDragDrop = true;
             this.txtCode.Location = new System.Drawing.Point(145, 3);
@@ -303,6 +315,7 @@
             this.txtCode.Size = new System.Drawing.Size(554, 282);
             this.txtCode.TabIndex = 0;
             this.txtCode.Text = "";
+            this.txtCode.SelectionChanged += new System.EventHandler(this.txtCode_SelectionChanged);
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             this.txtCode.Enter += new System.EventHandler(this.txtCode_Enter);
             this.txtCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyDown);
@@ -310,6 +323,7 @@
             // 
             // treeProject
             // 
+            this.treeProject.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeProject.ImageIndex = 0;
             this.treeProject.ImageList = this.TreeNodeImageList;
@@ -355,17 +369,6 @@
             this.toolStripContainer1.Size = new System.Drawing.Size(136, 282);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // lblCurPos
-            // 
-            this.lblCurPos.Name = "lblCurPos";
-            this.lblCurPos.Size = new System.Drawing.Size(91, 22);
-            this.lblCurPos.Text = "Cursor Position:";
             // 
             // frmMain
             // 
