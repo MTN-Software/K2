@@ -34,7 +34,7 @@ namespace Intro_To_Business_Project
         // Dear God this code is messy.
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
-            highlight.DemoHighlight(txtCode);
+            highlight.HTMLHighlight(txtCode);
             //curPosition = txtCode.Text.IndexOf(txtCode.SelectedText);
             
             //highlight.DemoHighlight(txtCode);
