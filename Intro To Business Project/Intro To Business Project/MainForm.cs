@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using FastColoredTextBoxNS;
 using Intro_To_Business_Project;
 
 namespace Intro_To_Business_Project
@@ -16,6 +17,7 @@ namespace Intro_To_Business_Project
     
     public partial class frmMain : Form
     {
+        
         //bool inTag;
         TreeNode tvNode;
         TreeNode tvRoot;
@@ -31,95 +33,10 @@ namespace Intro_To_Business_Project
             this.Close();
         }
 
-        // Dear God this code is messy.
+        // Dear God this code is messy.  ~not anymore
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
-            highlight.HTMLHighlight(txtCode);
-            //curPosition = txtCode.Text.IndexOf(txtCode.SelectedText);
-            
-            //highlight.DemoHighlight(txtCode);
            
-
-            //curPosition = txtCode.Text.Length;
-            //txtCode.Select(curPosition, curPosition);
-
-            #region comment
-            /*try
-            {
-                
-                /*MatchCollection matches = Regex.Matches(txtCode.Text, "(<\\S*\\s\\S*>|<\\S*>)"); //Find tags
-                foreach (Match mMatch in matches)
-                {
-                    Console.WriteLine(mMatch.Value); 
-                    
-                }*/
-                
-                
-            /*}
-            catch (Exception)
-            {
-
-                Console.WriteLine("oops\n");
-                
-            }
-           
-
-            int selected = txtCode.Text.IndexOf(txtCode.SelectedText);
-            for (int i = 0; i < txtCode.Lines.Length; i++)
-            {
-                string text = txtCode.Lines[i];
-                txtCode.Select(txtCode.GetFirstCharIndexFromLine(i), text.Length);
-                //txtCode.SelectionColor = colorForLine(text);
-
-                //txtCode.Select(txtCode.Text.Length, txtCode.Text.Length);
-
-                if (text.Contains("<") & text.Contains(">"))
-                {
-                    if (!inTag)
-                    {
-                        txtCode.Select(text.IndexOf("<"), "<".Length);
-                        txtCode.SelectionColor = Color.Red;
-                        inTag = true;
-                    }
-                    else //if (inTag)
-                    {
-                        txtCode.Select(text.IndexOf("<") + 1, txtCode.Text.Length);
-                        txtCode.SelectionColor = Color.Blue;
-                        txtCode.Select(text.IndexOf(">"), ">".Length);
-                        txtCode.SelectionColor = Color.Red;
-                        inTag = false;
-                    }
-                    //txtCode.Select(txtCode.Text.IndexOf("<") + 1, txtCode.Text.Length);
-                    //txtCode.SelectionColor = Color.Blue;
-
-                }
-                //else if (!txtCode.Lines.Contains("<"))
-                //{
-                //inTag = false;
-                //}
-
-                //else
-                //{
-                //txtCode.Select(txtCode.Text.Length, txtCode.Text.Length);
-                //txtCode.SelectionColor = Color.Black;
-                //}
-                txtCode.Select(selected + 1, selected + 1);
-            }
-            //private Color colorForLine(string line)
-            //{
-            //    if(line.Contains("[INFO]"))
-            //    {
-            //        return Color.Green;
-            //    }
-            //    /*if(line.Contains("[ERROR]", StringComparison.InvariantCultureIgnoreCase))
-            //    {
-            //        return Color.Red;
-            //    } 
-
-            //    return Color.Black;
-            //}
-            */
-#endregion
 
         }
 
@@ -137,6 +54,9 @@ namespace Intro_To_Business_Project
         private void frmMain_Load(object sender, EventArgs e)
         {
             tvRoot = this.treeProject.Nodes.Add("Root");
+            txtCode.AutoIndent = true;
+            txtCode.HighlightingRangeType = HighlightingRangeType.AllTextRange;
+            txtCode.Language = Language.HTML;
         }
 
         private void mnuSave_Click(object sender, EventArgs e)
@@ -166,7 +86,7 @@ namespace Intro_To_Business_Project
         {
             // <Debug Code>
             //lblCurPos.Text =  "Cursor Position: " + txtCode.SelectionStart.ToString();
-            highlight.updateSelect(txtCode);
+            //highlight.updateSelect(txtCode);
             // </Debug Code>
             
         }
@@ -189,6 +109,16 @@ namespace Intro_To_Business_Project
         private void txtCode_SelectionChanged(object sender, EventArgs e)
         {
             txtCode.SelectionColor = Color.Black;
+        }
+
+        private void btnHighlight_Click(object sender, EventArgs e)
+        {
+            //highlight.HTMLHighlight(txtCode);
+        }
+
+        private void txtCode_Load(object sender, EventArgs e)
+        {
+
         }
 
 

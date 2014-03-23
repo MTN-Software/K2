@@ -48,9 +48,10 @@ namespace Intro_To_Business_Project
         /// <param name="rtb"></param>
         public void HTMLHighlight(RichTextBox rtb)
         {
+            
             //Regex rgx = new Regex("(<\\S*\\s\\S*>|<\\S*>)");     // Use this for XMLToken
             string token = HTMLToken;
-            Regex rgx = new Regex(HTMLToken);
+            Regex rgx = new Regex(XMLToken);
             MatchCollection mc = rgx.Matches(rtb.Text);
             foreach (Match index in mc)
             {
@@ -61,6 +62,7 @@ namespace Intro_To_Business_Project
                 rtb.SelectionStart = StartPos;
                 rtb.SelectionStart += 1;
                 rtb.SelectionColor = Color.Black;
+                rtb.Select(rtb.SelectionStart, rtb.SelectionStart);
             }
         }
 
