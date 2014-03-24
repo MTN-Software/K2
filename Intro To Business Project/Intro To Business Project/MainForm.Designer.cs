@@ -33,6 +33,8 @@
             this.mnuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +43,10 @@
             this.mnuXml = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuJavascript = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCss = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnHighlight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSql = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPhp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCsharp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVb = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTools = new System.Windows.Forms.ToolStrip();
             this.mnuNew = new System.Windows.Forms.ToolStripButton();
             this.mnuOpen = new System.Windows.Forms.ToolStripButton();
@@ -75,8 +80,7 @@
             // 
             this.mnuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
-            this.mnuView,
-            this.btnHighlight});
+            this.mnuView});
             this.mnuStrip.Location = new System.Drawing.Point(0, 0);
             this.mnuStrip.Name = "mnuStrip";
             this.mnuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
@@ -87,6 +91,8 @@
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newProjectToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.saveToolStripMenuItem,
             this.mnuFHelp,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
@@ -98,6 +104,19 @@
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
             this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
             this.newProjectToolStripMenuItem.Text = "New Project";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
+            this.saveAsToolStripMenuItem.Text = "Save As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
+            this.saveToolStripMenuItem.Text = "Save";
             // 
             // mnuFHelp
             // 
@@ -126,7 +145,11 @@
             this.mnuHtml,
             this.mnuXml,
             this.mnuJavascript,
-            this.mnuCss});
+            this.mnuCss,
+            this.mnuSql,
+            this.mnuPhp,
+            this.mnuCsharp,
+            this.mnuVb});
             this.mnuSyntax.Name = "mnuSyntax";
             this.mnuSyntax.Size = new System.Drawing.Size(136, 30);
             this.mnuSyntax.Text = "Syntax";
@@ -137,6 +160,7 @@
             this.mnuHtml.Name = "mnuHtml";
             this.mnuHtml.Size = new System.Drawing.Size(194, 30);
             this.mnuHtml.Text = "HTML/XHTML";
+            this.mnuHtml.Click += new System.EventHandler(this.mnuHtml_Click);
             // 
             // mnuXml
             // 
@@ -144,6 +168,7 @@
             this.mnuXml.Name = "mnuXml";
             this.mnuXml.Size = new System.Drawing.Size(194, 30);
             this.mnuXml.Text = "XML";
+            this.mnuXml.Click += new System.EventHandler(this.mnuXml_Click);
             // 
             // mnuJavascript
             // 
@@ -151,6 +176,7 @@
             this.mnuJavascript.Name = "mnuJavascript";
             this.mnuJavascript.Size = new System.Drawing.Size(194, 30);
             this.mnuJavascript.Text = "JavaScript";
+            this.mnuJavascript.Click += new System.EventHandler(this.mnuJavascript_Click);
             // 
             // mnuCss
             // 
@@ -158,13 +184,39 @@
             this.mnuCss.Name = "mnuCss";
             this.mnuCss.Size = new System.Drawing.Size(194, 30);
             this.mnuCss.Text = "CSS";
+            this.mnuCss.Click += new System.EventHandler(this.mnuCss_Click);
             // 
-            // btnHighlight
+            // mnuSql
             // 
-            this.btnHighlight.Name = "btnHighlight";
-            this.btnHighlight.Size = new System.Drawing.Size(97, 29);
-            this.btnHighlight.Text = "Highlight";
-            this.btnHighlight.Click += new System.EventHandler(this.btnHighlight_Click);
+            this.mnuSql.CheckOnClick = true;
+            this.mnuSql.Name = "mnuSql";
+            this.mnuSql.Size = new System.Drawing.Size(194, 30);
+            this.mnuSql.Text = "SQL";
+            this.mnuSql.Click += new System.EventHandler(this.mnuSql_Click);
+            // 
+            // mnuPhp
+            // 
+            this.mnuPhp.CheckOnClick = true;
+            this.mnuPhp.Name = "mnuPhp";
+            this.mnuPhp.Size = new System.Drawing.Size(194, 30);
+            this.mnuPhp.Text = "PHP";
+            this.mnuPhp.Click += new System.EventHandler(this.mnuPhp_Click);
+            // 
+            // mnuCsharp
+            // 
+            this.mnuCsharp.CheckOnClick = true;
+            this.mnuCsharp.Name = "mnuCsharp";
+            this.mnuCsharp.Size = new System.Drawing.Size(194, 30);
+            this.mnuCsharp.Text = "CSharp";
+            this.mnuCsharp.Click += new System.EventHandler(this.mnuCSharp_Click);
+            // 
+            // mnuVb
+            // 
+            this.mnuVb.CheckOnClick = true;
+            this.mnuVb.Name = "mnuVb";
+            this.mnuVb.Size = new System.Drawing.Size(194, 30);
+            this.mnuVb.Text = "VB";
+            this.mnuVb.Click += new System.EventHandler(this.mnuVb_Click);
             // 
             // mnuTools
             // 
@@ -197,6 +249,7 @@
             this.mnuNew.Name = "mnuNew";
             this.mnuNew.Size = new System.Drawing.Size(23, 29);
             this.mnuNew.Text = "&New";
+            this.mnuNew.Click += new System.EventHandler(this.mnuNew_Click);
             // 
             // mnuOpen
             // 
@@ -347,6 +400,7 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
             this.txtCode.Location = new System.Drawing.Point(217, 5);
             this.txtCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -455,8 +509,13 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel lblCurPos;
-        private System.Windows.Forms.ToolStripMenuItem btnHighlight;
         private FastColoredTextBoxNS.FastColoredTextBox txtCode;
+        private System.Windows.Forms.ToolStripMenuItem mnuSql;
+        private System.Windows.Forms.ToolStripMenuItem mnuPhp;
+        private System.Windows.Forms.ToolStripMenuItem mnuCsharp;
+        private System.Windows.Forms.ToolStripMenuItem mnuVb;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }
 
