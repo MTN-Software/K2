@@ -68,8 +68,9 @@ namespace Intro_To_Business_Project
             tvRoot = this.treeProject.Nodes.Add("Root");
             txtCode.AutoIndent = true;
             txtCode.HighlightingRangeType = HighlightingRangeType.AllTextRange;
-            txtCode.Focus();
+            openedFileName = string.Empty;
             //MessageBox.Show("hi");
+            txtCode.Focus();
             //txtCode.Language = Language.HTML;
         }
 
@@ -88,13 +89,19 @@ namespace Intro_To_Business_Project
             openf.RestoreDirectory = true;
             openf.Multiselect = true;
             //openf.InitialDirectory = "C:";
-
-            openf.ShowDialog();
-
-            fileName = openf.FileName;
-            System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
-            openedFileName = fileName;
-            txtCode.Text = openFile.ReadToEnd();
+            DialogResult dia;
+            dia = openf.ShowDialog();
+            if (dia == DialogResult.OK)
+            {
+                fileName = openf.FileName;
+                System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
+                openedFileName = fileName;
+                txtCode.Text = openFile.ReadToEnd();
+            }
+            else
+            {
+                openedFileName = string.Empty;
+            }
 
         }
 
