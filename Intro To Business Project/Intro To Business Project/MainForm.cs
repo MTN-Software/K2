@@ -21,6 +21,7 @@ namespace Intro_To_Business_Project
         string filter = "HTML (.htm)|*.htm*|CSS (.css)|*.css|XML (.xml)|*.xml|JavaScript (.js)|*.js|C Sharp (.cs)|*.cs|Visual Basic (.vb)|*.vb|PHP (.php)|*.php|SQL (.sql)|*.sql|All Files (*.*)|*.*";
         string[] fileType = { ".htm", ".css", ".xml", ".js", ".cs", ".vb", ".php", ".sql" };
         string openedFileName;
+        string projectDir;
         enum progLang
         {
             CSharp = 0,
@@ -41,16 +42,33 @@ namespace Intro_To_Business_Project
 
         private void checkProjectDirectory()
         {
-            if (Directory.Exists(@"C:\Program Files\Lion Ware Web Studio\"))
+            projectDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            projectDir += @"\Web Studio\";
+            //MessageBox.Show(projectDir);
+
+            if (!Directory.Exists(projectDir))
             {
-                MessageBox.Show("Test");
+                DialogResult result =  MessageBox.Show("Would you like to create a workspace in " + projectDir + " ?", "Missing Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    Directory.CreateDirectory(projectDir);
+                }
+                else
+                {
+                    DialogResult diffDir = MessageBox.Show("Would you like to create a workspace in a different directory?","Create Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    if (diffDir == DialogResult.Yes)
+                    {
+                        FolderBrowserDialog folderDir = new FolderBrowserDialog();
+                        folderDir.ShowNewFolderButton = true;
+                        folderDir.Description = "Where do you want your workspace directory to be?";
+                        folderDir.RootFolder = Environment.SpecialFolder.MyDocuments;
+                        folderDir.ShowDialog();
+                        string newDir = folderDir.SelectedPath + @"\Web Studio\";
+                        Directory.CreateDirectory(newDir);
+                    }
+                }
             }
-            else
-            {
-                MessageBox.Show("Test");
-                //Directory.CreateDirectory()
-            }
-            
+             
         }
         private void mnuExit_Click(object sender, EventArgs e)
         {
@@ -394,14 +412,18 @@ namespace Intro_To_Business_Project
             }
         }
 
-        private void updateDirectory()
+        private void NewProject()
         {
+            FolderBrowserDialog fDia = new FolderBrowserDialog();
+            fDia.RootFolder = Environment.SpecialFolder.MyDocuments;
+            fDia.ShowNewFolderButton = true;
+            fDia.ShowDialog();
             
         }
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            updateDirectory();
+            NewProject();
         }
     }
 }
