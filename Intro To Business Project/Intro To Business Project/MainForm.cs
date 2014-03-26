@@ -24,45 +24,81 @@ namespace Intro_To_Business_Project
         string projectDir;
         enum progLang
         {
-            CSharp = 0,
-            VB,
-            HTML,
-            SQL,
-            PHP,
-            JS,
-            CSS,
-            XML
+            CSharp = 0, VB, HTML, SQL, PHP, JS, CSS, XML
         }
         public frmMain()
         {
             InitializeComponent();
             projectDir = null;
             checkProjectDirectory();
+            PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
         }
 
-        private void checkProjectDirectory()
+        // Populate the Project Directory pane
+        private void PopulateTreeList(string directory)
         {
+            TreeNode rootNode;  // Create a node that will be the root of the project directory
+            DirectoryInfo info = new DirectoryInfo(directory);  // Set info equal to the directory specified
+
+            if (info.Exists)    // If the directory exists, do the following
+            {
+                rootNode = new TreeNode(info.Name);
+                rootNode.Tag = info;
+                GetDirectories(info.GetDirectories(), rootNode);
+                listProjDir.Nodes.Add(rootNode);
+            }
+        }
+
+        /// <summary>
+        /// Loads the directories
+        /// </summary>
+        /// <param name="subDirs"></param>
+        /// <param name="nodeToAddTo"></param>
+        private void GetDirectories(DirectoryInfo[] subDirs, TreeNode nodeToAddTo)
+        {
+            TreeNode aNode;
+            DirectoryInfo[] subSubDirs;
+            foreach (DirectoryInfo subDir in subDirs)
+            {
+                aNode = new TreeNode(subDir.Name, 0, 0);
+                aNode.Tag = subDir;
+                aNode.ImageKey = "folder";
+                subSubDirs = subDir.GetDirectories();
+                if (subSubDirs.Length != 0)
+                {
+                    GetDirectories(subSubDirs, aNode);
+                }
+                nodeToAddTo.Nodes.Add(aNode);
+            }
+        }
+
+        // TODO: Change function type to boolean
+        private bool checkProjectDirectory()
+        {
+            // set projectDir to the mydocuments directory
             projectDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            projectDir += @"\Web Studio\";
+            projectDir += @"\Web Studio\"; // then add this to projectDir
+            // Check if the environmental variable "projDir" exists and if it does, set projectDir equal to it
             if (Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User) != null)
             {
                 projectDir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User);
             }
-            //MessageBox.Show(projectDir);
+            //MessageBox.Show(projectDir);  // Debug Code
 
-            if (!Directory.Exists(projectDir))
+            if (!Directory.Exists(projectDir))  // Check if the directory projectDir does not exist
             {
+                // If so, ask if the user would like to create it
                 DialogResult result =  MessageBox.Show("Would you like to create a workspace in " + projectDir + " ?", "Missing Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
+                if (result == DialogResult.Yes)  // If the user would like to create it, create the directory, then set the environmental variable "projDir" equal to the directory
                 {
                     Directory.CreateDirectory(projectDir);
-                    Environment.SetEnvironmentVariable("projDir", projectDir, EnvironmentVariableTarget.User);
-                    
+                    Environment.SetEnvironmentVariable("projDir", projectDir, EnvironmentVariableTarget.User);  // The target just makes it so that the variable doesn't get cleared once the application closes
+                    return true;
                 }
-                else
+                else  // If the user does not want to create it, ask if they want to in a different directory
                 {
                     DialogResult diffDir = MessageBox.Show("Would you like to create a workspace in a different directory?","Create Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    if (diffDir == DialogResult.Yes)
+                    if (diffDir == DialogResult.Yes)    // If so, ask them what directory, then set "projDir" equal to that directory
                     {
                         FolderBrowserDialog folderDir = new FolderBrowserDialog();
                         folderDir.ShowNewFolderButton = true;
@@ -72,8 +108,17 @@ namespace Intro_To_Business_Project
                         string newDir = folderDir.SelectedPath + @"\Web Studio\";
                         Directory.CreateDirectory(newDir);
                         Environment.SetEnvironmentVariable("projDir", newDir, EnvironmentVariableTarget.User);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
+            }
+            else
+            {
+                return true;
             }
              
         }
@@ -82,33 +127,21 @@ namespace Intro_To_Business_Project
             this.Close();
         }
 
-        // Dear God this code is messy.  ~not anymore
-        private void txtCode_TextChanged(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void mnuNewFolder_Click(object sender, EventArgs e)
         {
-            //tvNode.Nodes.Add("File");
-            //tvNode = tvRoot.Nodes.Add("folder");
+            // TODO: Create a new folder
+            //  --- Debug Code ---
+                //tvNode.Nodes.Add("File");
+                //tvNode = tvRoot.Nodes.Add("folder");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            /*tvRoot = this.treeProject.Nodes.Add("Root");*/
             txtCode.AutoIndent = true;
             txtCode.HighlightingRangeType = HighlightingRangeType.AllTextRange;
             openedFileName = string.Empty;
-            //MessageBox.Show("hi");
             txtCode.Focus();
-            //txtCode.Language = Language.HTML;
         }
 
         private void mnuSave_Click(object sender, EventArgs e)
@@ -154,15 +187,12 @@ namespace Intro_To_Business_Project
         private void txtCode_KeyUp(object sender, KeyEventArgs e)
         {
             // <Debug Code>
-            lblCurPos.Text = "Cursor Position: " + txtCode.SelectionStart.ToString();
-            
+            //lblCurPos.Text = "Cursor Position: " + txtCode.SelectionStart.ToString();
             // </Debug Code>
-            //curPosition = txtCode.Text.IndexOf(txtCode.SelectedText);
         }
 
         private void txtCode_Enter(object sender, EventArgs e)
         {
-            //curPosition = txtCode.s
 
         }
 
@@ -401,7 +431,7 @@ namespace Intro_To_Business_Project
             createNew();
         }
 
-        private void createNew()
+        private bool createNew()
         {
             DialogResult dia;
             dia = MessageBox.Show("Save Changes?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
@@ -410,32 +440,44 @@ namespace Intro_To_Business_Project
                 save();
                 txtCode.Text = string.Empty;
                 openedFileName = string.Empty;
+                return true;
             }
             else if (dia == DialogResult.No)
             {
                 txtCode.Text = string.Empty;
                 openedFileName = string.Empty;
+                return true;
             }
             else
             {
-
+                return false;
             }
         }
+
 
         private void NewProject()
         {
             FolderBrowserDialog fDia = new FolderBrowserDialog();
+            
+            fDia.ShowNewFolderButton = true;
+            fDia.ShowDialog();
+
             if (listProjDir == null)
             {
-                fDia.RootFolder = Environment.SpecialFolder.MyDocuments;
+                fDia.RootFolder = Environment.SpecialFolder.MyComputer;
+                //TODO: add code that loads the directory into treeview
+                PopulateTreeList(fDia.SelectedPath);
             }
             else
             {
-                //fDia.RootFolder = Environment.SpecialFolder.
+                if (createNew())
+                {
+                    fDia.RootFolder = Environment.SpecialFolder.MyComputer;
+                    listProjDir.Nodes.Clear();
+                    //TODO: add code that loads the directory into treeview
+                    PopulateTreeList(fDia.SelectedPath);
+                }
             }
-            fDia.ShowNewFolderButton = true;
-            fDia.ShowDialog();
-            
         }
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
