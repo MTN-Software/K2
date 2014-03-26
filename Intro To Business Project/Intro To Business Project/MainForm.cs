@@ -36,7 +36,7 @@ namespace Intro_To_Business_Project
         public frmMain()
         {
             InitializeComponent();
-            
+            projectDir = null;
             checkProjectDirectory();
         }
 
@@ -44,6 +44,10 @@ namespace Intro_To_Business_Project
         {
             projectDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             projectDir += @"\Web Studio\";
+            if (Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User) != null)
+            {
+                projectDir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User);
+            }
             //MessageBox.Show(projectDir);
 
             if (!Directory.Exists(projectDir))
@@ -52,6 +56,8 @@ namespace Intro_To_Business_Project
                 if (result == DialogResult.Yes)
                 {
                     Directory.CreateDirectory(projectDir);
+                    Environment.SetEnvironmentVariable("projDir", projectDir, EnvironmentVariableTarget.User);
+                    
                 }
                 else
                 {
@@ -65,6 +71,7 @@ namespace Intro_To_Business_Project
                         folderDir.ShowDialog();
                         string newDir = folderDir.SelectedPath + @"\Web Studio\";
                         Directory.CreateDirectory(newDir);
+                        Environment.SetEnvironmentVariable("projDir", newDir, EnvironmentVariableTarget.User);
                     }
                 }
             }
@@ -319,7 +326,10 @@ namespace Intro_To_Business_Project
             SaveFileDialog savef = new SaveFileDialog();
 
             savef.Filter = filter;
-            
+            if (projectDir != null)
+            {
+                savef.InitialDirectory = projectDir;
+            }
             savef.RestoreDirectory = true;
 
             switch (prog)
@@ -415,7 +425,14 @@ namespace Intro_To_Business_Project
         private void NewProject()
         {
             FolderBrowserDialog fDia = new FolderBrowserDialog();
-            fDia.RootFolder = Environment.SpecialFolder.MyDocuments;
+            if (listProjDir == null)
+            {
+                fDia.RootFolder = Environment.SpecialFolder.MyDocuments;
+            }
+            else
+            {
+                //fDia.RootFolder = Environment.SpecialFolder.
+            }
             fDia.ShowNewFolderButton = true;
             fDia.ShowDialog();
             
