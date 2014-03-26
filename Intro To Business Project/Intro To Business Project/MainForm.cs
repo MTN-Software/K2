@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using FastColoredTextBoxNS;
 using Intro_To_Business_Project;
-
+using System.IO;
 namespace Intro_To_Business_Project
 {
     
@@ -38,8 +38,21 @@ namespace Intro_To_Business_Project
         public frmMain()
         {
             InitializeComponent();
+            checkProjectDirectory();
         }
 
+        private void checkProjectDirectory()
+        {
+            if (Directory.Exists(@"C:\Program Files\Lion Ware Web Studio\"))
+            {
+                MessageBox.Show("Test");
+            }
+            else
+            {
+                MessageBox.Show("Test Failed");
+            }
+            
+        }
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -60,12 +73,12 @@ namespace Intro_To_Business_Project
         private void mnuNewFolder_Click(object sender, EventArgs e)
         {
             //tvNode.Nodes.Add("File");
-            tvNode = tvRoot.Nodes.Add("folder");
+            //tvNode = tvRoot.Nodes.Add("folder");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            tvRoot = this.treeProject.Nodes.Add("Root");
+            /*tvRoot = this.treeProject.Nodes.Add("Root");*/
             txtCode.AutoIndent = true;
             txtCode.HighlightingRangeType = HighlightingRangeType.AllTextRange;
             openedFileName = string.Empty;
@@ -380,6 +393,16 @@ namespace Intro_To_Business_Project
             {
 
             }
+        }
+
+        private void updateDirectory()
+        {
+            
+        }
+
+        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateDirectory();
         }
     }
 }

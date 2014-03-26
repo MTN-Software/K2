@@ -62,18 +62,21 @@
             this.mnuNewFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.lblCurPos = new System.Windows.Forms.ToolStripLabel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeProject = new System.Windows.Forms.TreeView();
             this.TreeNodeImageList = new System.Windows.Forms.ImageList(this.components);
-            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.ListViewLargeImageList = new System.Windows.Forms.ImageList(this.components);
             this.ListViewSmallImageList = new System.Windows.Forms.ImageList(this.components);
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listProjDir = new System.Windows.Forms.TreeView();
+            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.imglistIcons = new System.Windows.Forms.ImageList(this.components);
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
-            this.toolStripContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuStrip
@@ -104,6 +107,7 @@
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
             this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
             this.newProjectToolStripMenuItem.Text = "New Project";
+            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
@@ -352,71 +356,12 @@
             this.lblCurPos.Size = new System.Drawing.Size(137, 29);
             this.lblCurPos.Text = "Cursor Position:";
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.treeProject, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtCode, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 67);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 451F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1053, 451);
-            this.tableLayoutPanel1.TabIndex = 2;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // treeProject
-            // 
-            this.treeProject.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeProject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeProject.ImageIndex = 0;
-            this.treeProject.ImageList = this.TreeNodeImageList;
-            this.treeProject.LabelEdit = true;
-            this.treeProject.Location = new System.Drawing.Point(4, 5);
-            this.treeProject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.treeProject.Name = "treeProject";
-            this.treeProject.SelectedImageIndex = 0;
-            this.treeProject.ShowNodeToolTips = true;
-            this.treeProject.Size = new System.Drawing.Size(205, 441);
-            this.treeProject.TabIndex = 1;
-            // 
             // TreeNodeImageList
             // 
             this.TreeNodeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("TreeNodeImageList.ImageStream")));
             this.TreeNodeImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.TreeNodeImageList.Images.SetKeyName(0, "ClosedFolder");
             this.TreeNodeImageList.Images.SetKeyName(1, "OpenFolder");
-            // 
-            // txtCode
-            // 
-            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(35, 22);
-            this.txtCode.BackBrush = null;
-            this.txtCode.CharHeight = 22;
-            this.txtCode.CharWidth = 12;
-            this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.txtCode.IsReplaceMode = false;
-            this.txtCode.Location = new System.Drawing.Point(217, 5);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
-            this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtCode.Size = new System.Drawing.Size(832, 441);
-            this.txtCode.SourceTextBox = this.txtCode;
-            this.txtCode.TabIndex = 0;
-            this.txtCode.Zoom = 100;
-            this.txtCode.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.txtCode_TextChanged);
-            this.txtCode.SelectionChanged += new System.EventHandler(this.txtCode_SelectionChanged);
-            this.txtCode.Load += new System.EventHandler(this.txtCode_Load);
-            this.txtCode.Enter += new System.EventHandler(this.txtCode_Enter);
-            this.txtCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyDown);
-            this.txtCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyUp);
             // 
             // ListViewLargeImageList
             // 
@@ -434,29 +379,64 @@
             this.ListViewSmallImageList.Images.SetKeyName(1, "Graph2");
             this.ListViewSmallImageList.Images.SetKeyName(2, "Graph3");
             // 
-            // toolStripContainer1
+            // splitContainer1
             // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 67);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // toolStripContainer1.ContentPanel
+            // splitContainer1.Panel1
             // 
-            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(204, 409);
-            this.toolStripContainer1.Location = new System.Drawing.Point(4, 5);
-            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(204, 434);
-            this.toolStripContainer1.TabIndex = 1;
-            this.toolStripContainer1.Text = "toolStripContainer1";
+            this.splitContainer1.Panel1.Controls.Add(this.listProjDir);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.txtCode);
+            this.splitContainer1.Size = new System.Drawing.Size(1053, 451);
+            this.splitContainer1.SplitterDistance = 351;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // listProjDir
+            // 
+            this.listProjDir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listProjDir.Location = new System.Drawing.Point(0, 0);
+            this.listProjDir.Name = "listProjDir";
+            this.listProjDir.Size = new System.Drawing.Size(351, 451);
+            this.listProjDir.TabIndex = 0;
+            // 
+            // txtCode
+            // 
+            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(35, 22);
+            this.txtCode.BackBrush = null;
+            this.txtCode.CharHeight = 22;
+            this.txtCode.CharWidth = 12;
+            this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.IsReplaceMode = false;
+            this.txtCode.Location = new System.Drawing.Point(0, 0);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
+            this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txtCode.Size = new System.Drawing.Size(698, 451);
+            this.txtCode.TabIndex = 0;
+            this.txtCode.Zoom = 100;
+            // 
+            // imglistIcons
+            // 
+            this.imglistIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistIcons.ImageStream")));
+            this.imglistIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglistIcons.Images.SetKeyName(0, "138.ico");
+            this.imglistIcons.Images.SetKeyName(1, "2882.ico");
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1053, 518);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.mnuTools);
             this.Controls.Add(this.mnuStrip);
-            this.Controls.Add(this.toolStripContainer1);
             this.MainMenuStrip = this.mnuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
@@ -466,10 +446,11 @@
             this.mnuStrip.PerformLayout();
             this.mnuTools.ResumeLayout(false);
             this.mnuTools.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
-            this.toolStripContainer1.ResumeLayout(false);
-            this.toolStripContainer1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,24 +479,25 @@
         private System.Windows.Forms.ToolStripButton mnuPaste;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton mnuHelp;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TreeView treeProject;
         internal System.Windows.Forms.ImageList TreeNodeImageList;
         internal System.Windows.Forms.ImageList ListViewLargeImageList;
         internal System.Windows.Forms.ImageList ListViewSmallImageList;
         private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton mnuNewFolder;
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel lblCurPos;
-        private FastColoredTextBoxNS.FastColoredTextBox txtCode;
         private System.Windows.Forms.ToolStripMenuItem mnuSql;
         private System.Windows.Forms.ToolStripMenuItem mnuPhp;
         private System.Windows.Forms.ToolStripMenuItem mnuCsharp;
         private System.Windows.Forms.ToolStripMenuItem mnuVb;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private FastColoredTextBoxNS.FastColoredTextBox txtCode;
+        private System.Windows.Forms.TreeView listProjDir;
+        private System.Windows.Forms.ImageList imglistIcons;
     }
 }
 
