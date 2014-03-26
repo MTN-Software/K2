@@ -17,9 +17,6 @@ namespace Intro_To_Business_Project
     
     public partial class frmMain : Form
     {
-        //bool inTag;
-        TreeNode tvNode;
-        TreeNode tvRoot;
         int prog;
         string filter = "HTML (.htm)|*.htm*|CSS (.css)|*.css|XML (.xml)|*.xml|JavaScript (.js)|*.js|C Sharp (.cs)|*.cs|Visual Basic (.vb)|*.vb|PHP (.php)|*.php|SQL (.sql)|*.sql|All Files (*.*)|*.*";
         string[] fileType = { ".htm", ".css", ".xml", ".js", ".cs", ".vb", ".php", ".sql" };
@@ -49,7 +46,8 @@ namespace Intro_To_Business_Project
             }
             else
             {
-                MessageBox.Show("Test Failed");
+                MessageBox.Show("Test");
+                //Directory.CreateDirectory()
             }
             
         }
