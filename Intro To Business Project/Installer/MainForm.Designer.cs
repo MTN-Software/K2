@@ -1,6 +1,6 @@
 ﻿namespace Installer
 {
-    partial class frmMain
+    partial class frmInstaller
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,8 @@
             this.btnChangeDir = new System.Windows.Forms.Button();
             this.lblThanks = new System.Windows.Forms.Label();
             this.lblDefaultDir = new System.Windows.Forms.Label();
+            this.lblDirDesc = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDirectory
@@ -43,12 +45,13 @@
             // 
             // btnChangeDir
             // 
-            this.btnChangeDir.Location = new System.Drawing.Point(607, 132);
+            this.btnChangeDir.Location = new System.Drawing.Point(607, 127);
             this.btnChangeDir.Name = "btnChangeDir";
-            this.btnChangeDir.Size = new System.Drawing.Size(171, 26);
+            this.btnChangeDir.Size = new System.Drawing.Size(171, 37);
             this.btnChangeDir.TabIndex = 1;
             this.btnChangeDir.Text = "Change Directory";
             this.btnChangeDir.UseVisualStyleBackColor = true;
+            this.btnChangeDir.Click += new System.EventHandler(this.btnChangeDir_Click);
             // 
             // lblThanks
             // 
@@ -64,25 +67,48 @@
             // lblDefaultDir
             // 
             this.lblDefaultDir.AutoSize = true;
-            this.lblDefaultDir.Location = new System.Drawing.Point(42, 165);
+            this.lblDefaultDir.Location = new System.Drawing.Point(38, 174);
             this.lblDefaultDir.Name = "lblDefaultDir";
             this.lblDefaultDir.Size = new System.Drawing.Size(181, 20);
             this.lblDefaultDir.TabIndex = 3;
             this.lblDefaultDir.Text = "[Insert Default Directory]";
             // 
-            // frmMain
+            // lblDirDesc
+            // 
+            this.lblDirDesc.AutoSize = true;
+            this.lblDirDesc.Location = new System.Drawing.Point(38, 233);
+            this.lblDirDesc.Name = "lblDirDesc";
+            this.lblDirDesc.Size = new System.Drawing.Size(209, 20);
+            this.lblDirDesc.TabIndex = 4;
+            this.lblDirDesc.Text = "[Insert Directory Description]";
+            // 
+            // btnNext
+            // 
+            this.btnNext.AutoSize = true;
+            this.btnNext.Location = new System.Drawing.Point(726, 393);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 30);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // frmInstaller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 435);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.lblDirDesc);
             this.Controls.Add(this.lblDefaultDir);
             this.Controls.Add(this.lblThanks);
             this.Controls.Add(this.btnChangeDir);
             this.Controls.Add(this.txtDirectory);
-            this.Name = "frmMain";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "frmInstaller";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lion Ware Web Studio Installer";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,6 +120,8 @@
         private System.Windows.Forms.Button btnChangeDir;
         private System.Windows.Forms.Label lblThanks;
         private System.Windows.Forms.Label lblDefaultDir;
+        private System.Windows.Forms.Label lblDirDesc;
+        private System.Windows.Forms.Button btnNext;
     }
 }
 

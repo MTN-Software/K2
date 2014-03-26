@@ -35,6 +35,7 @@ namespace Intro_To_Business_Project
         public frmMain()
         {
             InitializeComponent();
+            
             checkProjectDirectory();
         }
 
