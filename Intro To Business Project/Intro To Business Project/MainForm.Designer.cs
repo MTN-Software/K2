@@ -62,10 +62,6 @@
             this.mnuNewFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.lblCurPos = new System.Windows.Forms.ToolStripLabel();
-            this.TreeNodeImageList = new System.Windows.Forms.ImageList(this.components);
-            this.ListViewLargeImageList = new System.Windows.Forms.ImageList(this.components);
-            this.ListViewSmallImageList = new System.Windows.Forms.ImageList(this.components);
-            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listProjDir = new System.Windows.Forms.TreeView();
             this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
@@ -356,29 +352,6 @@
             this.lblCurPos.Size = new System.Drawing.Size(137, 29);
             this.lblCurPos.Text = "Cursor Position:";
             // 
-            // TreeNodeImageList
-            // 
-            this.TreeNodeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("TreeNodeImageList.ImageStream")));
-            this.TreeNodeImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.TreeNodeImageList.Images.SetKeyName(0, "ClosedFolder");
-            this.TreeNodeImageList.Images.SetKeyName(1, "OpenFolder");
-            // 
-            // ListViewLargeImageList
-            // 
-            this.ListViewLargeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ListViewLargeImageList.ImageStream")));
-            this.ListViewLargeImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.ListViewLargeImageList.Images.SetKeyName(0, "Graph1");
-            this.ListViewLargeImageList.Images.SetKeyName(1, "Graph2");
-            this.ListViewLargeImageList.Images.SetKeyName(2, "Graph3");
-            // 
-            // ListViewSmallImageList
-            // 
-            this.ListViewSmallImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ListViewSmallImageList.ImageStream")));
-            this.ListViewSmallImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.ListViewSmallImageList.Images.SetKeyName(0, "Graph1");
-            this.ListViewSmallImageList.Images.SetKeyName(1, "Graph2");
-            this.ListViewSmallImageList.Images.SetKeyName(2, "Graph3");
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -399,8 +372,12 @@
             // listProjDir
             // 
             this.listProjDir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listProjDir.ImageIndex = 0;
+            this.listProjDir.ImageList = this.imglistIcons;
+            this.listProjDir.LabelEdit = true;
             this.listProjDir.Location = new System.Drawing.Point(0, 0);
             this.listProjDir.Name = "listProjDir";
+            this.listProjDir.SelectedImageIndex = 0;
             this.listProjDir.Size = new System.Drawing.Size(351, 451);
             this.listProjDir.TabIndex = 0;
             // 
@@ -413,6 +390,7 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
             this.txtCode.Location = new System.Drawing.Point(0, 0);
             this.txtCode.Name = "txtCode";
@@ -479,9 +457,6 @@
         private System.Windows.Forms.ToolStripButton mnuPaste;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton mnuHelp;
-        internal System.Windows.Forms.ImageList TreeNodeImageList;
-        internal System.Windows.Forms.ImageList ListViewLargeImageList;
-        internal System.Windows.Forms.ImageList ListViewSmallImageList;
         private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton mnuNewFolder;
@@ -493,7 +468,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuVb;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private FastColoredTextBoxNS.FastColoredTextBox txtCode;
         private System.Windows.Forms.TreeView listProjDir;

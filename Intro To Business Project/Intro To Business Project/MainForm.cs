@@ -56,7 +56,7 @@ namespace Intro_To_Business_Project
         /// <param name="nodeToAddTo"></param>
         private void GetDirectories(DirectoryInfo[] subDirs, TreeNode nodeToAddTo)
         {
-            TreeNode aNode;
+            TreeNode aNode;         // Creates a treeNode
             DirectoryInfo[] subSubDirs;
             foreach (DirectoryInfo subDir in subDirs)
             {
@@ -69,6 +69,21 @@ namespace Intro_To_Business_Project
                     GetDirectories(subSubDirs, aNode);
                 }
                 nodeToAddTo.Nodes.Add(aNode);
+                GetFiles(subDir, aNode);
+            }
+        }
+
+        private void GetFiles(DirectoryInfo subDirs, TreeNode nodeToAddTo)
+        {
+            TreeNode aFile;
+            //DirectoryInfo[] subSubDirs;
+            DirectoryInfo dirInfo = subDirs;//(DirectoryInfo)nodeToAddTo.Tag;
+            foreach (FileInfo file in dirInfo.GetFiles())
+            {
+                aFile = new TreeNode(file.Name, 1, 1);  // For Some reason, it won't change icons correctly
+                aFile.Tag = file;
+                aFile.ImageKey = "file";
+                nodeToAddTo.Nodes.Add(aFile);
             }
         }
 
