@@ -22,7 +22,8 @@ namespace Intro_To_Business_Project
         string[] fileType = { ".htm", ".css", ".xml", ".js", ".cs", ".vb", ".php", ".sql" };
         string openedFileName;
         string projectDir;
-        TabPage tabPage;
+        TreeNode selectedNode;
+        //TabPage tabPage;
         enum progLang
         {
             CSharp = 0, VB, HTML, SQL, PHP, JS, CSS, XML
@@ -33,6 +34,7 @@ namespace Intro_To_Business_Project
             projectDir = null;
             checkProjectDirectory();
             PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
+            selectedNode = null;
         }
 
         // Populate the Project Directory pane
@@ -181,7 +183,7 @@ namespace Intro_To_Business_Project
             openf.Filter = filter;
             openf.FilterIndex = 1;
             openf.RestoreDirectory = true;
-            openf.Multiselect = true;
+            openf.Multiselect = false;  // Should only be true in multitab branch
             //openf.InitialDirectory = "C:";
             DialogResult dia;
             dia = openf.ShowDialog();
@@ -518,6 +520,7 @@ namespace Intro_To_Business_Project
             switch (e.Button)
             {
                 case MouseButtons.Left:
+                    selectedNode = e.Node;
                     break;
                 case MouseButtons.Middle:
                     break;
@@ -538,17 +541,24 @@ namespace Intro_To_Business_Project
 
         private void contextMenuDisplay(Point dispPoint, TreeNodeMouseClickEventArgs EventArgs)
         {
+            selectedNode = EventArgs.Node;
             if (EventArgs.Node.ImageKey == "folder")
             {
                 mnuNodeContextMenuStrip.Show(dispPoint);
             }
-            else
+            else if (EventArgs.Node.ImageKey == "file")
             {
                 mnuFileNodeContextMenuStrip.Show(dispPoint);
+            }
+            else
+            {
+                //MessageBox.Show(EventArgs.Node.ImageKey.ToString());
+                mnuNodeContextMenuStrip.Show(dispPoint);
             }
         }
         private void listProjDir_MouseClick(object sender, MouseEventArgs e)
         {
+            //selectedNode = null;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -558,6 +568,31 @@ namespace Intro_To_Business_Project
             frm.Dispose();
         }
 
+        private void folderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newFolder();
+        }
+
+        private void newFolder()
+        {
+            if (selectedNode != null)       // If a node is selected
+            {
+                frmNewFolderFile frmNew = new frmNewFolderFile();   // initialize the class frmNewFolderFile
+                frmNew.Text = "New Folder";                         // set the title text to "New Folder"
+                frmNew.lblNewFolderFile.Text = "New Folder Name: "; // set the label to "New Folder Name: "
+                frmNew.ShowDialog();                                // show the form as a dialog box
+                string newFolderName = frmNew.strName();            // retrieve the value of the textbox
+                frmNew.Dispose();                                   // free resources used by the form
+
+                DirectoryInfo dirInfo;                             
+                string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
+                dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFolderName + @"\");    // Initialize the directoryInfo class
+                Directory.CreateDirectory(dirInfo.ToString()); // Creates a directory with the path provided by dirInfo
+                listProjDir.Nodes.Clear();  // Clears tree view
+                PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
+                //MessageBox.Show(dirInfo.ToString());  // Debug Code
+            }
+        }
 
     }
 }
