@@ -64,15 +64,25 @@
             this.lblCurPos = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listProjDir = new System.Windows.Forms.TreeView();
-            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.imglistIcons = new System.Windows.Forms.ImageList(this.components);
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.mnuNodeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openInNewTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.mnuNodeContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuStrip
@@ -92,6 +102,7 @@
             this.newProjectToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.aboutToolStripMenuItem,
             this.mnuFHelp,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
@@ -364,7 +375,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.txtCode);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             this.splitContainer1.Size = new System.Drawing.Size(1053, 451);
             this.splitContainer1.SplitterDistance = 351;
             this.splitContainer1.TabIndex = 2;
@@ -381,6 +392,24 @@
             this.listProjDir.Size = new System.Drawing.Size(351, 451);
             this.listProjDir.TabIndex = 0;
             this.listProjDir.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseClick);
+            this.listProjDir.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listProjDir_MouseClick);
+            // 
+            // imglistIcons
+            // 
+            this.imglistIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistIcons.ImageStream")));
+            this.imglistIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglistIcons.Images.SetKeyName(0, "folder");
+            this.imglistIcons.Images.SetKeyName(1, "file");
+            // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(698, 451);
+            this.tabControl.TabIndex = 1;
             // 
             // txtCode
             // 
@@ -391,22 +420,59 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
-            this.txtCode.Location = new System.Drawing.Point(0, 0);
+            this.txtCode.Location = new System.Drawing.Point(3, 3);
             this.txtCode.Name = "txtCode";
             this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
             this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtCode.Size = new System.Drawing.Size(698, 451);
+            this.txtCode.Size = new System.Drawing.Size(684, 412);
             this.txtCode.TabIndex = 0;
             this.txtCode.Zoom = 100;
             // 
-            // imglistIcons
+            // tabPage1
             // 
-            this.imglistIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistIcons.ImageStream")));
-            this.imglistIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglistIcons.Images.SetKeyName(0, "folder");
-            this.imglistIcons.Images.SetKeyName(1, "file");
+            this.tabPage1.Controls.Add(this.txtCode);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(690, 418);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "new";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // mnuNodeContextMenuStrip
+            // 
+            this.mnuNodeContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newFolderToolStripMenuItem,
+            this.openInNewTabToolStripMenuItem,
+            this.renameToolStripMenuItem});
+            this.mnuNodeContextMenuStrip.Name = "mnuNodeContextMenuStrip";
+            this.mnuNodeContextMenuStrip.Size = new System.Drawing.Size(223, 94);
+            // 
+            // newFolderToolStripMenuItem
+            // 
+            this.newFolderToolStripMenuItem.Name = "newFolderToolStripMenuItem";
+            this.newFolderToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
+            this.newFolderToolStripMenuItem.Text = "New Folder";
+            // 
+            // openInNewTabToolStripMenuItem
+            // 
+            this.openInNewTabToolStripMenuItem.Name = "openInNewTabToolStripMenuItem";
+            this.openInNewTabToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
+            this.openInNewTabToolStripMenuItem.Text = "Open In New Tab";
+            // 
+            // renameToolStripMenuItem
+            // 
+            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
+            this.renameToolStripMenuItem.Text = "Rename";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -419,7 +485,7 @@
             this.MainMenuStrip = this.mnuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
-            this.Text = "HTML Editor";
+            this.Text = "Lion Ware Web Studio ";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.mnuStrip.ResumeLayout(false);
             this.mnuStrip.PerformLayout();
@@ -429,7 +495,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.mnuNodeContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,9 +539,16 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private FastColoredTextBoxNS.FastColoredTextBox txtCode;
         private System.Windows.Forms.TreeView listProjDir;
         private System.Windows.Forms.ImageList imglistIcons;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPage1;
+        private FastColoredTextBoxNS.FastColoredTextBox txtCode;
+        private System.Windows.Forms.ContextMenuStrip mnuNodeContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem newFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openInNewTabToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

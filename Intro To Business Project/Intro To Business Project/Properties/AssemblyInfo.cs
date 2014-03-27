@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Intro To Business Project")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Lion Ware Web Studio")]
+[assembly: AssemblyDescription("Developed by MTN Software's Thomas Maloney for Lion Ware, Web Studio brings you a lightweight IDE for web development.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Intro To Business Project")]
+[assembly: AssemblyCompany("Lion Ware")]
+[assembly: AssemblyProduct("Web Studio")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

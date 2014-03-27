@@ -14,7 +14,7 @@ using Intro_To_Business_Project;
 using System.IO;
 namespace Intro_To_Business_Project
 {
-    
+
     public partial class frmMain : Form
     {
         int prog;
@@ -82,7 +82,7 @@ namespace Intro_To_Business_Project
 
         private void GetFiles(DirectoryInfo subDirs, TreeNode nodeToAddTo)
         {
-            
+
             //DirectoryInfo[] subSubDirs;
             DirectoryInfo dirInfo = subDirs;
             foreach (FileInfo file in dirInfo.GetFiles())
@@ -95,7 +95,7 @@ namespace Intro_To_Business_Project
             }
         }
 
-        
+
         private bool checkProjectDirectory()
         {
             // set projectDir to the mydocuments directory
@@ -111,7 +111,7 @@ namespace Intro_To_Business_Project
             if (!Directory.Exists(projectDir))  // Check if the directory projectDir does not exist
             {
                 // If so, ask if the user would like to create it
-                DialogResult result =  MessageBox.Show("Would you like to create a workspace in " + projectDir + " ?", "Missing Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                DialogResult result = MessageBox.Show("Would you like to create a workspace in " + projectDir + " ?", "Missing Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)  // If the user would like to create it, create the directory, then set the environmental variable "projDir" equal to the directory
                 {
                     Directory.CreateDirectory(projectDir);
@@ -120,7 +120,7 @@ namespace Intro_To_Business_Project
                 }
                 else  // If the user does not want to create it, ask if they want to in a different directory
                 {
-                    DialogResult diffDir = MessageBox.Show("Would you like to create a workspace in a different directory?","Create Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    DialogResult diffDir = MessageBox.Show("Would you like to create a workspace in a different directory?", "Create Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     if (diffDir == DialogResult.Yes)    // If so, ask them what directory, then set "projDir" equal to that directory
                     {
                         FolderBrowserDialog folderDir = new FolderBrowserDialog();
@@ -143,7 +143,7 @@ namespace Intro_To_Business_Project
             {
                 return true;
             }
-             
+
         }
         private void mnuExit_Click(object sender, EventArgs e)
         {
@@ -155,8 +155,8 @@ namespace Intro_To_Business_Project
         {
             // TODO: Create a new folder
             //  --- Debug Code ---
-                //tvNode.Nodes.Add("File");
-                //tvNode = tvRoot.Nodes.Add("folder");
+            //tvNode.Nodes.Add("File");
+            //tvNode = tvRoot.Nodes.Add("folder");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -190,6 +190,9 @@ namespace Intro_To_Business_Project
                 System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
                 openedFileName = fileName;
                 txtCode.Text = openFile.ReadToEnd();
+                FileInfo file = new FileInfo(openf.FileName);
+                string title = file.Name;
+                tabPage1.Text = title;
             }
             else
             {
@@ -204,7 +207,7 @@ namespace Intro_To_Business_Project
             //lblCurPos.Text =  "Cursor Position: " + txtCode.SelectionStart.ToString();
             //highlight.updateSelect(txtCode);
             // </Debug Code>
-            
+
         }
 
         private void txtCode_KeyUp(object sender, KeyEventArgs e)
@@ -286,7 +289,7 @@ namespace Intro_To_Business_Project
             setStyle();
         }
 
-        
+
         private void mnuVb_Click(object sender, EventArgs e)
         {
             mnuCss.Checked = false;
@@ -481,7 +484,7 @@ namespace Intro_To_Business_Project
         private void NewProject()
         {
             FolderBrowserDialog fDia = new FolderBrowserDialog();
-            
+
             fDia.ShowNewFolderButton = true;
             fDia.ShowDialog();
 
@@ -510,6 +513,7 @@ namespace Intro_To_Business_Project
 
         private void listProjDir_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -519,6 +523,8 @@ namespace Intro_To_Business_Project
                 case MouseButtons.None:
                     break;
                 case MouseButtons.Right:
+                    Point pt = listProjDir.PointToScreen(e.Location);
+                    mnuNodeContextMenuStrip.Show(pt);
                     break;
                 case MouseButtons.XButton1:
                     break;
@@ -527,6 +533,17 @@ namespace Intro_To_Business_Project
                 default:
                     break;
             }
+        }
+
+        private void listProjDir_MouseClick(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout frm = new frmAbout();
+            frm.ShowDialog();
+            frm.Dispose();
         }
     }
 }
