@@ -22,6 +22,7 @@ namespace Intro_To_Business_Project
         string[] fileType = { ".htm", ".css", ".xml", ".js", ".cs", ".vb", ".php", ".sql" };
         string openedFileName;
         string projectDir;
+        TabPage tabPage;
         enum progLang
         {
             CSharp = 0, VB, HTML, SQL, PHP, JS, CSS, XML
@@ -545,6 +546,20 @@ namespace Intro_To_Business_Project
             frm.ShowDialog();
             frm.Dispose();
         }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPage == tabAddTab)
+            {
+                //MessageBox.Show("Test");
+                tabPage = new TabPage("hi");
+               // tabPage.Controls.Add(f);
+                tabControl.TabPages.Insert(tabControl.TabCount - 1, "new");
+                
+            }
+        }
+
+
     }
 }
 
