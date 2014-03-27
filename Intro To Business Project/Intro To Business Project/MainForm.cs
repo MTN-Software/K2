@@ -525,7 +525,7 @@ namespace Intro_To_Business_Project
                     break;
                 case MouseButtons.Right:
                     Point pt = listProjDir.PointToScreen(e.Location);
-                    mnuNodeContextMenuStrip.Show(pt);
+                    contextMenuDisplay(pt, e);
                     break;
                 case MouseButtons.XButton1:
                     break;
@@ -536,6 +536,17 @@ namespace Intro_To_Business_Project
             }
         }
 
+        private void contextMenuDisplay(Point dispPoint, TreeNodeMouseClickEventArgs EventArgs)
+        {
+            if (EventArgs.Node.ImageKey == "folder")
+            {
+                mnuNodeContextMenuStrip.Show(dispPoint);
+            }
+            else
+            {
+                mnuFileNodeContextMenuStrip.Show(dispPoint);
+            }
+        }
         private void listProjDir_MouseClick(object sender, MouseEventArgs e)
         {
         }
@@ -545,18 +556,6 @@ namespace Intro_To_Business_Project
             frmAbout frm = new frmAbout();
             frm.ShowDialog();
             frm.Dispose();
-        }
-
-        private void tabControl_Selected(object sender, TabControlEventArgs e)
-        {
-            if (e.TabPage == tabAddTab)
-            {
-                //MessageBox.Show("Test");
-                tabPage = new TabPage("hi");
-               // tabPage.Controls.Add(f);
-                tabControl.TabPages.Insert(tabControl.TabCount - 1, "new");
-                
-            }
         }
 
 
