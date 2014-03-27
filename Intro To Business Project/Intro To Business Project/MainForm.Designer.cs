@@ -380,6 +380,7 @@
             this.listProjDir.SelectedImageIndex = 0;
             this.listProjDir.Size = new System.Drawing.Size(351, 451);
             this.listProjDir.TabIndex = 0;
+            this.listProjDir.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseClick);
             // 
             // txtCode
             // 
@@ -404,8 +405,8 @@
             // 
             this.imglistIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistIcons.ImageStream")));
             this.imglistIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglistIcons.Images.SetKeyName(0, "138.ico");
-            this.imglistIcons.Images.SetKeyName(1, "2882.ico");
+            this.imglistIcons.Images.SetKeyName(0, "folder");
+            this.imglistIcons.Images.SetKeyName(1, "file");
             // 
             // frmMain
             // 

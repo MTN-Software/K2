@@ -60,34 +60,42 @@ namespace Intro_To_Business_Project
             DirectoryInfo[] subSubDirs;
             foreach (DirectoryInfo subDir in subDirs)
             {
-                aNode = new TreeNode(subDir.Name, 0, 0);
-                aNode.Tag = subDir;
-                aNode.ImageKey = "folder";
-                subSubDirs = subDir.GetDirectories();
-                if (subSubDirs.Length != 0)
+                try
                 {
-                    GetDirectories(subSubDirs, aNode);
+                    aNode = new TreeNode(subDir.Name, 0, 0);    // casts aNode as a TreeNode with a folder icon
+                    aNode.Tag = subDir;
+                    aNode.ImageKey = "folder";
+                    subSubDirs = subDir.GetDirectories();   // sets subSubDirs equal to the array of directories in subDir
+                    if (subSubDirs.Length != 0)     // if there are subdirectories, do this
+                    {
+                        GetDirectories(subSubDirs, aNode);
+                    }
+                    nodeToAddTo.Nodes.Add(aNode);   // add the node
+                    GetFiles(subDir, aNode);    // add any files as a child node
                 }
-                nodeToAddTo.Nodes.Add(aNode);
-                GetFiles(subDir, aNode);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Oops", MessageBoxButtons.OKCancel);
+                }
             }
         }
 
         private void GetFiles(DirectoryInfo subDirs, TreeNode nodeToAddTo)
         {
-            TreeNode aFile;
+            
             //DirectoryInfo[] subSubDirs;
-            DirectoryInfo dirInfo = subDirs;//(DirectoryInfo)nodeToAddTo.Tag;
+            DirectoryInfo dirInfo = subDirs;
             foreach (FileInfo file in dirInfo.GetFiles())
             {
-                aFile = new TreeNode(file.Name, 1, 1);  // For Some reason, it won't change icons correctly
-                aFile.Tag = file;
+                TreeNode aFile = new TreeNode(file.Name, 1, 1);  // For Some reason, it won't change icons correctly;
                 aFile.ImageKey = "file";
+                aFile.Tag = file;
+                //aFile.ImageKey = "file";
                 nodeToAddTo.Nodes.Add(aFile);
             }
         }
 
-        // TODO: Change function type to boolean
+        
         private bool checkProjectDirectory()
         {
             // set projectDir to the mydocuments directory
@@ -498,6 +506,27 @@ namespace Intro_To_Business_Project
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NewProject();
+        }
+
+        private void listProjDir_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    break;
+                case MouseButtons.Middle:
+                    break;
+                case MouseButtons.None:
+                    break;
+                case MouseButtons.Right:
+                    break;
+                case MouseButtons.XButton1:
+                    break;
+                case MouseButtons.XButton2:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
