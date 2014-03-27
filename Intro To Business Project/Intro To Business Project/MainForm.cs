@@ -204,41 +204,7 @@ namespace Intro_To_Business_Project
 
         }
 
-        private void txtCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            // <Debug Code>
-            //lblCurPos.Text =  "Cursor Position: " + txtCode.SelectionStart.ToString();
-            //highlight.updateSelect(txtCode);
-            // </Debug Code>
 
-        }
-
-        private void txtCode_KeyUp(object sender, KeyEventArgs e)
-        {
-            // <Debug Code>
-            //lblCurPos.Text = "Cursor Position: " + txtCode.SelectionStart.ToString();
-            // </Debug Code>
-        }
-
-        private void txtCode_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCode_SelectionChanged(object sender, EventArgs e)
-        {
-            //txtCode.SelectionColor = Color.Black;
-        }
-
-        private void btnHighlight_Click(object sender, EventArgs e)
-        {
-            //highlight.HTMLHighlight(txtCode);
-        }
-
-        private void txtCode_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void mnuCss_Click(object sender, EventArgs e)
         {
@@ -591,6 +557,22 @@ namespace Intro_To_Business_Project
                 listProjDir.Nodes.Clear();  // Clears tree view
                 PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
                 //MessageBox.Show(dirInfo.ToString());  // Debug Code
+            }
+        }
+
+        private void listProjDir_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.ImageKey == "file")
+            {
+                openedFileName = string.Empty;
+                string fileName = Environment.GetEnvironmentVariable("projDir") + @"..\" + e.Node.FullPath;
+                //MessageBox.Show(fileName);
+                System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
+                openedFileName = fileName;
+                txtCode.Text = openFile.ReadToEnd();
+                FileInfo file = new FileInfo(fileName);
+                string title = file.Name;
+                tabPage1.Text = title;
             }
         }
 

@@ -69,16 +69,16 @@
             this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.mnuNodeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileNodeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.javaScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileNodeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -388,6 +388,7 @@
             this.listProjDir.Size = new System.Drawing.Size(351, 458);
             this.listProjDir.TabIndex = 0;
             this.listProjDir.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseClick);
+            this.listProjDir.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseDoubleClick);
             this.listProjDir.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listProjDir_MouseClick);
             // 
             // imglistIcons
@@ -427,7 +428,6 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
             this.txtCode.Location = new System.Drawing.Point(3, 3);
             this.txtCode.Name = "txtCode";
@@ -443,13 +443,57 @@
             this.renameToolStripMenuItem,
             this.newToolStripMenuItem});
             this.mnuNodeContextMenuStrip.Name = "mnuNodeContextMenuStrip";
-            this.mnuNodeContextMenuStrip.Size = new System.Drawing.Size(199, 97);
+            this.mnuNodeContextMenuStrip.Size = new System.Drawing.Size(149, 64);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(148, 30);
             this.renameToolStripMenuItem.Text = "Rename";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.folderToolStripMenuItem,
+            this.fileToolStripMenuItem});
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(148, 30);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // folderToolStripMenuItem
+            // 
+            this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
+            this.folderToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
+            this.folderToolStripMenuItem.Text = "Folder";
+            this.folderToolStripMenuItem.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hTMLToolStripMenuItem,
+            this.cSSToolStripMenuItem,
+            this.javaScriptToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // hTMLToolStripMenuItem
+            // 
+            this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
+            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(162, 30);
+            this.hTMLToolStripMenuItem.Text = "HTML";
+            // 
+            // cSSToolStripMenuItem
+            // 
+            this.cSSToolStripMenuItem.Name = "cSSToolStripMenuItem";
+            this.cSSToolStripMenuItem.Size = new System.Drawing.Size(162, 30);
+            this.cSSToolStripMenuItem.Text = "CSS";
+            // 
+            // javaScriptToolStripMenuItem
+            // 
+            this.javaScriptToolStripMenuItem.Name = "javaScriptToolStripMenuItem";
+            this.javaScriptToolStripMenuItem.Size = new System.Drawing.Size(162, 30);
+            this.javaScriptToolStripMenuItem.Text = "JavaScript";
             // 
             // mnuFileNodeContextMenuStrip
             // 
@@ -477,50 +521,6 @@
             this.renameToolStripMenuItem1.Name = "renameToolStripMenuItem1";
             this.renameToolStripMenuItem1.Size = new System.Drawing.Size(231, 30);
             this.renameToolStripMenuItem1.Text = "Rename";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.folderToolStripMenuItem,
-            this.fileToolStripMenuItem});
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // folderToolStripMenuItem
-            // 
-            this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
-            this.folderToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
-            this.folderToolStripMenuItem.Text = "Folder";
-            this.folderToolStripMenuItem.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hTMLToolStripMenuItem,
-            this.cSSToolStripMenuItem,
-            this.javaScriptToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // hTMLToolStripMenuItem
-            // 
-            this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
-            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
-            this.hTMLToolStripMenuItem.Text = "HTML";
-            // 
-            // cSSToolStripMenuItem
-            // 
-            this.cSSToolStripMenuItem.Name = "cSSToolStripMenuItem";
-            this.cSSToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
-            this.cSSToolStripMenuItem.Text = "CSS";
-            // 
-            // javaScriptToolStripMenuItem
-            // 
-            this.javaScriptToolStripMenuItem.Name = "javaScriptToolStripMenuItem";
-            this.javaScriptToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
-            this.javaScriptToolStripMenuItem.Text = "JavaScript";
             // 
             // frmMain
             // 
