@@ -658,6 +658,22 @@ namespace Intro_To_Business_Project
                 PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
             }
         }
+
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RemoveFolder();
+        }
+
+        private void RemoveFolder()
+        {
+            if (selectedNode != null)
+            {
+                string getProjectDir = Environment.GetEnvironmentVariable("projDir");
+                string nodeToDelete = selectedNode.FullPath;
+                string getFolderDir = getProjectDir + @"..\" + nodeToDelete;
+                MessageBox.Show(getFolderDir);
+            }
+        }
     }
 }
 

@@ -76,6 +76,7 @@
             this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -425,6 +426,7 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
             this.txtCode.Location = new System.Drawing.Point(3, 3);
             this.txtCode.Name = "txtCode";
@@ -438,14 +440,15 @@
             // 
             this.mnuNodeContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.renameToolStripMenuItem,
-            this.newToolStripMenuItem});
+            this.newToolStripMenuItem,
+            this.deleteToolStripMenuItem1});
             this.mnuNodeContextMenuStrip.Name = "mnuNodeContextMenuStrip";
-            this.mnuNodeContextMenuStrip.Size = new System.Drawing.Size(199, 97);
+            this.mnuNodeContextMenuStrip.Size = new System.Drawing.Size(199, 127);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(148, 30);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.renameToolStripMenuItem.Text = "Rename";
             // 
             // newToolStripMenuItem
@@ -467,7 +470,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
             this.fileToolStripMenuItem.Text = "File";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
@@ -498,6 +501,13 @@
             this.renameToolStripMenuItem1.Size = new System.Drawing.Size(231, 30);
             this.renameToolStripMenuItem1.Text = "Rename";
             // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(198, 30);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -509,7 +519,7 @@
             this.MainMenuStrip = this.mnuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
-            this.Text = "Lion Ware Web Studio ";
+            this.Text = "               ";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.mnuStrip.ResumeLayout(false);
             this.mnuStrip.PerformLayout();
@@ -577,6 +587,7 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
     }
 }
 
