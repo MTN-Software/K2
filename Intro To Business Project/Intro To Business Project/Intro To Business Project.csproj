@@ -52,6 +52,9 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutocompleteMenu">
+      <HintPath>..\..\..\..\..\Downloads\AutocompleteMenuDemo\AutocompleteMenuDemo\AutocompleteMenu.dll</HintPath>
+    </Reference>
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\..\..\..\Downloads\FastColoredTextBox-master\FastColoredTextBox-master\Binary\FastColoredTextBox.dll</HintPath>
     </Reference>

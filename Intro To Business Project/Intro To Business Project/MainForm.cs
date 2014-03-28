@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using FastColoredTextBoxNS;
+using AutocompleteMenuNS;
 using Intro_To_Business_Project;
 using System.IO;
+
 namespace Intro_To_Business_Project
 {
 
@@ -338,6 +340,7 @@ namespace Intro_To_Business_Project
             {
                 case (int)progLang.CSharp:
                     txtCode.Language = Language.CSharp;
+                    
                     break;
                 case (int)progLang.HTML:
                     txtCode.Language = Language.HTML;
@@ -702,6 +705,16 @@ namespace Intro_To_Business_Project
                     PopulateTreeList(getProjectDir);
                 }
             }
+        }
+
+        private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            createNew();
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
