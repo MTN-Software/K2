@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using FastColoredTextBoxNS;
+using AutocompleteMenuNS;
 using Intro_To_Business_Project;
 using System.IO;
+
 namespace Intro_To_Business_Project
 {
 
@@ -86,14 +88,12 @@ namespace Intro_To_Business_Project
         private void GetFiles(DirectoryInfo subDirs, TreeNode nodeToAddTo)
         {
 
-            //DirectoryInfo[] subSubDirs;
             DirectoryInfo dirInfo = subDirs;
             foreach (FileInfo file in dirInfo.GetFiles())
             {
                 TreeNode aFile = new TreeNode(file.Name, 1, 1);  // For Some reason, it won't change icons correctly;
                 aFile.ImageKey = "file";
                 aFile.Tag = file;
-                //aFile.ImageKey = "file";
                 nodeToAddTo.Nodes.Add(aFile);
             }
         }
@@ -109,7 +109,6 @@ namespace Intro_To_Business_Project
             {
                 projectDir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User);
             }
-            //MessageBox.Show(projectDir);  // Debug Code
 
             if (!Directory.Exists(projectDir))  // Check if the directory projectDir does not exist
             {
@@ -154,12 +153,8 @@ namespace Intro_To_Business_Project
         }
 
 
-        private void mnuNewFolder_Click(object sender, EventArgs e)
+        private void mnuNewFolder_Click(object sender, EventArgs e)     // Why is this even here?
         {
-            // TODO: Create a new folder
-            //  --- Debug Code ---
-            //tvNode.Nodes.Add("File");
-            //tvNode = tvRoot.Nodes.Add("folder");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -184,7 +179,6 @@ namespace Intro_To_Business_Project
             openf.FilterIndex = 1;
             openf.RestoreDirectory = true;
             openf.Multiselect = false;  // Should only be true in multitab branch
-            //openf.InitialDirectory = "C:";
             DialogResult dia;
             dia = openf.ShowDialog();
             if (dia == DialogResult.OK)
@@ -346,6 +340,7 @@ namespace Intro_To_Business_Project
             {
                 case (int)progLang.CSharp:
                     txtCode.Language = Language.CSharp;
+                    
                     break;
                 case (int)progLang.HTML:
                     txtCode.Language = Language.HTML;
@@ -489,7 +484,6 @@ namespace Intro_To_Business_Project
             if (listProjDir == null)
             {
                 fDia.RootFolder = Environment.SpecialFolder.MyComputer;
-                //TODO: add code that loads the directory into treeview
                 PopulateTreeList(fDia.SelectedPath);
             }
             else
@@ -498,7 +492,6 @@ namespace Intro_To_Business_Project
                 {
                     fDia.RootFolder = Environment.SpecialFolder.MyComputer;
                     listProjDir.Nodes.Clear();
-                    //TODO: add code that loads the directory into treeview
                     PopulateTreeList(fDia.SelectedPath);
                 }
             }
@@ -547,7 +540,6 @@ namespace Intro_To_Business_Project
             }
             else
             {
-                //MessageBox.Show(EventArgs.Node.ImageKey.ToString());
                 mnuNodeContextMenuStrip.Show(dispPoint);
             }
         }
@@ -587,7 +579,6 @@ namespace Intro_To_Business_Project
                 Directory.CreateDirectory(dirInfo.ToString()); // Creates a directory with the path provided by dirInfo
                 listProjDir.Nodes.Clear();  // Clears tree view
                 PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
-                //MessageBox.Show(dirInfo.ToString());  // Debug Code
             }
         }
 
@@ -595,44 +586,51 @@ namespace Intro_To_Business_Project
         {
             if (e.Node.ImageKey == "file")
             {
-                openedFileName = string.Empty;
-                string fileName = Environment.GetEnvironmentVariable("projDir") + @"..\" + e.Node.FullPath;
-                //MessageBox.Show(fileName);
-                System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
-                openedFileName = fileName;
-                FileInfo file = new FileInfo(fileName);
-                string title = file.Name;
-                tabPage1.Text = title;
-                //MessageBox.Show(file.Extension);
-                switch (file.Extension)
+                try
                 {
-                    case ".htm":
-                        txtCode.Language = Language.HTML;
-                        break;
-                    case ".css":
-                        break;
-                    case ".xml":
-                        txtCode.Language = Language.HTML;
-                        break;
-                    case ".js":
-                        txtCode.Language = Language.JS;
-                        break;
-                    case ".cs":
-                        txtCode.Language = Language.CSharp;
-                        break;
-                    case ".vb":
-                        txtCode.Language = Language.VB;
-                        break;
-                    case ".php":
-                        txtCode.Language = Language.PHP;
-                        break;
-                    case ".sql":
-                        txtCode.Language = Language.SQL;
-                        break;
-                    default:
-                        break;
+                    openedFileName = string.Empty;
+                    string fileName = Environment.GetEnvironmentVariable("projDir") + @"..\" + e.Node.FullPath;
+                    System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);     // fix this
+                    openedFileName = fileName;
+                    FileInfo file = new FileInfo(fileName);
+                    string title = file.Name;
+                    tabPage1.Text = title;
+                    switch (file.Extension)
+                    {
+                        case ".htm":
+                            txtCode.Language = Language.HTML;
+                            break;
+                        case ".css":
+                            break;
+                        case ".xml":
+                            txtCode.Language = Language.HTML;
+                            break;
+                        case ".js":
+                            txtCode.Language = Language.JS;
+                            break;
+                        case ".cs":
+                            txtCode.Language = Language.CSharp;
+                            break;
+                        case ".vb":
+                            txtCode.Language = Language.VB;
+                            break;
+                        case ".php":
+                            txtCode.Language = Language.PHP;
+                            break;
+                        case ".sql":
+                            txtCode.Language = Language.SQL;
+                            break;
+                        default:
+                            break;
+                    }
+                    txtCode.Text = openFile.ReadToEnd();
+                    openFile.Dispose();
                 }
-                txtCode.Text = openFile.ReadToEnd();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.HResult.ToString(), "Oops, looks like an exception occured!");
+
+                }
             }
         }
 
@@ -651,7 +649,6 @@ namespace Intro_To_Business_Project
                 frmNew.ShowDialog();                                // show the form as a dialog box
                 string newFileName = frmNew.strName();            // retrieve the value of the textbox
                 string fileType = frmNew.comboFileTypes.SelectedItem.ToString();
-                //MessageBox.Show(fileType);
                 frmNew.Dispose();                                   // free resources used by the form
                 
                 DirectoryInfo dirInfo;
@@ -659,12 +656,65 @@ namespace Intro_To_Business_Project
                 string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
                 dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFileName);    // Initialize the directoryInfo class
                 resultFile = dirInfo + fileType;
-                //MessageBox.Show(resultFile);  // Debug Code
                 File.CreateText(resultFile);   // Creates a file with the path provided by dirInfo
                 listProjDir.Nodes.Clear();  // Clears tree view
                 PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
-                //MessageBox.Show(dirInfo.ToString());  // Debug Code
             }
+        }
+
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RemoveFolder();
+        }
+
+        private void RemoveFolder()
+        {
+            if (selectedNode != null)
+            {
+                string getProjectDir = Environment.GetEnvironmentVariable("projDir");
+                string nodeToDelete = selectedNode.FullPath;
+                string getFolderDir = getProjectDir + @"..\" + nodeToDelete;
+                DialogResult confirm = MessageBox.Show("Are you sure you want to delete this? It will be gone forever (i.e. a long time)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (confirm == DialogResult.Yes)
+                {
+                    Directory.Delete(getFolderDir);
+                    listProjDir.Nodes.Clear();
+                    PopulateTreeList(getProjectDir);
+                }
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveFile();
+        }
+
+        private void RemoveFile()
+        {
+            if (selectedNode != null)
+            {
+                string getProjectDir = Environment.GetEnvironmentVariable("projDir");
+                string fullPath = selectedNode.FullPath;
+                string fileToDelete = getProjectDir + @"..\" + fullPath;
+                DialogResult confirm = MessageBox.Show("Are you sure you want to delete this? It will be gone forever (i.e. a long time)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    File.Delete(fileToDelete);
+                    listProjDir.Nodes.Clear();
+                    PopulateTreeList(getProjectDir);
+                }
+            }
+        }
+
+        private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            createNew();
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
