@@ -575,6 +575,8 @@ namespace Intro_To_Business_Project
                 frmNewFolderFile frmNew = new frmNewFolderFile();   // initialize the class frmNewFolderFile
                 frmNew.Text = "New Folder";                         // set the title text to "New Folder"
                 frmNew.lblNewFolderFile.Text = "New Folder Name: "; // set the label to "New Folder Name: "
+                frmNew.lblFileType.Enabled = false;
+                frmNew.comboFileTypes.Enabled = false;
                 frmNew.ShowDialog();                                // show the form as a dialog box
                 string newFolderName = frmNew.strName();            // retrieve the value of the textbox
                 frmNew.Dispose();                                   // free resources used by the form
@@ -636,7 +638,7 @@ namespace Intro_To_Business_Project
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            newFile();
         }
 
         private void newFile()
@@ -648,12 +650,17 @@ namespace Intro_To_Business_Project
                 frmNew.lblNewFolderFile.Text = "New File Name: ";   // set the label to "New File Name: "
                 frmNew.ShowDialog();                                // show the form as a dialog box
                 string newFileName = frmNew.strName();            // retrieve the value of the textbox
+                string fileType = frmNew.comboFileTypes.SelectedItem.ToString();
+                //MessageBox.Show(fileType);
                 frmNew.Dispose();                                   // free resources used by the form
-
+                
                 DirectoryInfo dirInfo;
+                string resultFile = string.Empty;
                 string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
                 dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFileName);    // Initialize the directoryInfo class
-                File.CreateText(dirInfo.ToString());   // Creates a file with the path provided by dirInfo
+                resultFile = dirInfo + fileType;
+                //MessageBox.Show(resultFile);  // Debug Code
+                File.CreateText(resultFile);   // Creates a file with the path provided by dirInfo
                 listProjDir.Nodes.Clear();  // Clears tree view
                 PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
                 //MessageBox.Show(dirInfo.ToString());  // Debug Code

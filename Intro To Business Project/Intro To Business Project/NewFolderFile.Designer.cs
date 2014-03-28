@@ -32,6 +32,8 @@
             this.lblNewFolderFile = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
+            this.comboFileTypes = new System.Windows.Forms.ComboBox();
+            this.lblFileType = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtName
@@ -66,12 +68,40 @@
             // 
             this.btnCancle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancle.AutoSize = true;
+            this.btnCancle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancle.Location = new System.Drawing.Point(369, 101);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(75, 30);
             this.btnCancle.TabIndex = 3;
             this.btnCancle.Text = "Cancle";
             this.btnCancle.UseVisualStyleBackColor = true;
+            // 
+            // comboFileTypes
+            // 
+            this.comboFileTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboFileTypes.FormattingEnabled = true;
+            this.comboFileTypes.Items.AddRange(new object[] {
+            ".htm",
+            ".css",
+            ".xml",
+            ".js",
+            ".cs",
+            ".vb",
+            ".php",
+            ".sql"});
+            this.comboFileTypes.Location = new System.Drawing.Point(194, 103);
+            this.comboFileTypes.Name = "comboFileTypes";
+            this.comboFileTypes.Size = new System.Drawing.Size(121, 28);
+            this.comboFileTypes.TabIndex = 4;
+            // 
+            // lblFileType
+            // 
+            this.lblFileType.AutoSize = true;
+            this.lblFileType.Location = new System.Drawing.Point(12, 106);
+            this.lblFileType.Name = "lblFileType";
+            this.lblFileType.Size = new System.Drawing.Size(76, 20);
+            this.lblFileType.TabIndex = 5;
+            this.lblFileType.Text = "File Type:";
             // 
             // frmNewFolderFile
             // 
@@ -80,6 +110,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancle;
             this.ClientSize = new System.Drawing.Size(537, 143);
+            this.Controls.Add(this.lblFileType);
+            this.Controls.Add(this.comboFileTypes);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.lblNewFolderFile);
@@ -99,5 +131,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancle;
         public System.Windows.Forms.Label lblNewFolderFile;
+        public System.Windows.Forms.ComboBox comboFileTypes;
+        public System.Windows.Forms.Label lblFileType;
     }
 }
