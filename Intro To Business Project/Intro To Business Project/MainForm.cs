@@ -671,7 +671,36 @@ namespace Intro_To_Business_Project
                 string getProjectDir = Environment.GetEnvironmentVariable("projDir");
                 string nodeToDelete = selectedNode.FullPath;
                 string getFolderDir = getProjectDir + @"..\" + nodeToDelete;
-                MessageBox.Show(getFolderDir);
+                DialogResult confirm = MessageBox.Show("Are you sure you want to delete this? It will be gone forever (i.e. a long time)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (confirm == DialogResult.Yes)
+                {
+                    Directory.Delete(getFolderDir);
+                    listProjDir.Nodes.Clear();
+                    PopulateTreeList(getProjectDir);
+                }
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveFile();
+        }
+
+        private void RemoveFile()
+        {
+            if (selectedNode != null)
+            {
+                string getProjectDir = Environment.GetEnvironmentVariable("projDir");
+                string fullPath = selectedNode.FullPath;
+                string fileToDelete = getProjectDir + @"..\" + fullPath;
+                DialogResult confirm = MessageBox.Show("Are you sure you want to delete this? It will be gone forever (i.e. a long time)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    File.Delete(fileToDelete);
+                    listProjDir.Nodes.Clear();
+                    PopulateTreeList(getProjectDir);
+                }
             }
         }
     }
