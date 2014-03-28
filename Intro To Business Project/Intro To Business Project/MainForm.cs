@@ -659,7 +659,7 @@ namespace Intro_To_Business_Project
                 string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
                 dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFileName);    // Initialize the directoryInfo class
                 resultFile = dirInfo + fileType;
-                //MessageBox.Show(resultFile);
+                //MessageBox.Show(resultFile);  // Debug Code
                 File.CreateText(resultFile);   // Creates a file with the path provided by dirInfo
                 listProjDir.Nodes.Clear();  // Clears tree view
                 PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
