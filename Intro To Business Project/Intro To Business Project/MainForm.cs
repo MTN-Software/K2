@@ -192,10 +192,39 @@ namespace Intro_To_Business_Project
                 fileName = openf.FileName;
                 System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
                 openedFileName = fileName;
-                txtCode.Text = openFile.ReadToEnd();
                 FileInfo file = new FileInfo(openf.FileName);
                 string title = file.Name;
                 tabPage1.Text = title;
+                switch (file.Extension)
+                {
+                    case ".htm":
+                        txtCode.Language = Language.HTML;
+                        break;
+                    case ".css":
+                        break;
+                    case ".xml":
+                        txtCode.Language = Language.HTML;
+                        break;
+                    case ".js":
+                        txtCode.Language = Language.JS;
+                        break;
+                    case ".cs":
+                        txtCode.Language = Language.CSharp;
+                        break;
+                    case ".vb":
+                        txtCode.Language = Language.VB;
+                        break;
+                    case ".php":
+                        txtCode.Language = Language.PHP;
+                        break;
+                    case ".sql":
+                        txtCode.Language = Language.SQL;
+                        break;
+                    default:
+                        break;
+                }
+                txtCode.Text = openFile.ReadToEnd();
+
             }
             else
             {
@@ -569,13 +598,67 @@ namespace Intro_To_Business_Project
                 //MessageBox.Show(fileName);
                 System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
                 openedFileName = fileName;
-                txtCode.Text = openFile.ReadToEnd();
                 FileInfo file = new FileInfo(fileName);
                 string title = file.Name;
                 tabPage1.Text = title;
+                //MessageBox.Show(file.Extension);
+                switch (file.Extension)
+                {
+                    case ".htm":
+                        txtCode.Language = Language.HTML;
+                        break;
+                    case ".css":
+                        break;
+                    case ".xml":
+                        txtCode.Language = Language.HTML;
+                        break;
+                    case ".js":
+                        txtCode.Language = Language.JS;
+                        break;
+                    case ".cs":
+                        txtCode.Language = Language.CSharp;
+                        break;
+                    case ".vb":
+                        txtCode.Language = Language.VB;
+                        break;
+                    case ".php":
+                        txtCode.Language = Language.PHP;
+                        break;
+                    case ".sql":
+                        txtCode.Language = Language.SQL;
+                        break;
+                    default:
+                        break;
+                }
+                txtCode.Text = openFile.ReadToEnd();
             }
         }
 
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newFile()
+        {
+            if (selectedNode != null)       // If a node is selected
+            {
+                frmNewFolderFile frmNew = new frmNewFolderFile();   // initialize the class frmNewFolderFile
+                frmNew.Text = "New File";                           // set the title text to "New File"
+                frmNew.lblNewFolderFile.Text = "New File Name: ";   // set the label to "New File Name: "
+                frmNew.ShowDialog();                                // show the form as a dialog box
+                string newFileName = frmNew.strName();            // retrieve the value of the textbox
+                frmNew.Dispose();                                   // free resources used by the form
+
+                DirectoryInfo dirInfo;
+                string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
+                dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFileName);    // Initialize the directoryInfo class
+                File.CreateText(dirInfo.ToString());   // Creates a file with the path provided by dirInfo
+                listProjDir.Nodes.Clear();  // Clears tree view
+                PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
+                //MessageBox.Show(dirInfo.ToString());  // Debug Code
+            }
+        }
     }
 }
 
