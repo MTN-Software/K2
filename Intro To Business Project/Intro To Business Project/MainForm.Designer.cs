@@ -425,7 +425,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             this.splitContainer1.Size = new System.Drawing.Size(1053, 458);
-            this.splitContainer1.SplitterDistance = 351;
+            this.splitContainer1.SplitterDistance = 242;
             this.splitContainer1.TabIndex = 2;
             // 
             // listProjDir
@@ -437,7 +437,7 @@
             this.listProjDir.Location = new System.Drawing.Point(0, 0);
             this.listProjDir.Name = "listProjDir";
             this.listProjDir.SelectedImageIndex = 0;
-            this.listProjDir.Size = new System.Drawing.Size(351, 458);
+            this.listProjDir.Size = new System.Drawing.Size(242, 458);
             this.listProjDir.TabIndex = 0;
             this.listProjDir.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseClick);
             this.listProjDir.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseDoubleClick);
@@ -457,7 +457,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(698, 458);
+            this.tabControl.Size = new System.Drawing.Size(807, 458);
             this.tabControl.TabIndex = 1;
             // 
             // tabPage1
@@ -466,7 +466,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(690, 425);
+            this.tabPage1.Size = new System.Drawing.Size(799, 425);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "new";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -482,12 +482,13 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
             this.txtCode.Location = new System.Drawing.Point(3, 3);
             this.txtCode.Name = "txtCode";
             this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
             this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtCode.Size = new System.Drawing.Size(684, 419);
+            this.txtCode.Size = new System.Drawing.Size(793, 419);
             this.txtCode.TabIndex = 0;
             this.txtCode.Zoom = 100;
             // 
