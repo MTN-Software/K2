@@ -23,6 +23,7 @@ namespace Intro_To_Business_Project
         string openedFileName;
         string projectDir;
         TabPage tabPage;
+
         enum progLang
         {
             CSharp = 0, VB, HTML, SQL, PHP, JS, CSS, XML
@@ -175,6 +176,12 @@ namespace Intro_To_Business_Project
 
         private void mnuOpen_Click(object sender, EventArgs e)
         {
+           
+
+        }
+
+        private bool open(FastColoredTextBox fast)
+        {
             OpenFileDialog openf = new OpenFileDialog();
             string fileName = string.Empty;
 
@@ -190,18 +197,18 @@ namespace Intro_To_Business_Project
                 fileName = openf.FileName;
                 System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
                 openedFileName = fileName;
-                txtCode.Text = openFile.ReadToEnd();
+                fast.Text = openFile.ReadToEnd();
                 FileInfo file = new FileInfo(openf.FileName);
                 string title = file.Name;
                 tabPage1.Text = title;
+                return true;
             }
             else
             {
                 openedFileName = string.Empty;
+                return false;
             }
-
         }
-
         private void txtCode_KeyDown(object sender, KeyEventArgs e)
         {
             // <Debug Code>
@@ -210,6 +217,7 @@ namespace Intro_To_Business_Project
             // </Debug Code>
 
         }
+
 
         private void txtCode_KeyUp(object sender, KeyEventArgs e)
         {
