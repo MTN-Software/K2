@@ -33,6 +33,8 @@
             this.mnuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +50,9 @@
             this.mnuPhp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCsharp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVb = new System.Windows.Forms.ToolStripMenuItem();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTools = new System.Windows.Forms.ToolStrip();
             this.mnuNew = new System.Windows.Forms.ToolStripButton();
             this.mnuOpen = new System.Windows.Forms.ToolStripButton();
@@ -67,11 +72,17 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.tabAddTab = new System.Windows.Forms.TabPage();
+            this.mnuAutoComplete = new AutocompleteMenuNS.AutocompleteMenu();
             this.mnuNodeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.newFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openInNewTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.folderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileNodeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -82,6 +93,7 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
             this.mnuNodeContextMenuStrip.SuspendLayout();
+            this.mnuFileNodeContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuStrip
@@ -99,6 +111,7 @@
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newProjectToolStripMenuItem,
+            this.newToolStripMenuItem1,
             this.saveAsToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.aboutToolStripMenuItem,
@@ -111,47 +124,72 @@
             // newProjectToolStripMenuItem
             // 
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
-            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
+            this.newProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(290, 30);
             this.newProjectToolStripMenuItem.Text = "New Project";
             this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
+            // 
+            // newToolStripMenuItem1
+            // 
+            this.newToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem1});
+            this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(290, 30);
+            this.newToolStripMenuItem1.Text = "New";
+            // 
+            // fileToolStripMenuItem1
+            // 
+            this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
+            this.fileToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(174, 30);
+            this.fileToolStripMenuItem1.Text = "File";
+            this.fileToolStripMenuItem1.Click += new System.EventHandler(this.fileToolStripMenuItem1_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
+            this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(290, 30);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(290, 30);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(290, 30);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // mnuFHelp
             // 
             this.mnuFHelp.Name = "mnuFHelp";
-            this.mnuFHelp.Size = new System.Drawing.Size(178, 30);
+            this.mnuFHelp.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.mnuFHelp.Size = new System.Drawing.Size(290, 30);
             this.mnuFHelp.Text = "Help";
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(178, 30);
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.X)));
+            this.mnuExit.Size = new System.Drawing.Size(290, 30);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuView
             // 
             this.mnuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuSyntax});
+            this.mnuSyntax,
+            this.themeToolStripMenuItem});
             this.mnuView.Name = "mnuView";
             this.mnuView.Size = new System.Drawing.Size(61, 29);
             this.mnuView.Text = "View";
@@ -168,7 +206,7 @@
             this.mnuCsharp,
             this.mnuVb});
             this.mnuSyntax.Name = "mnuSyntax";
-            this.mnuSyntax.Size = new System.Drawing.Size(136, 30);
+            this.mnuSyntax.Size = new System.Drawing.Size(137, 30);
             this.mnuSyntax.Text = "Syntax";
             // 
             // mnuHtml
@@ -234,6 +272,28 @@
             this.mnuVb.Size = new System.Drawing.Size(194, 30);
             this.mnuVb.Text = "VB";
             this.mnuVb.Click += new System.EventHandler(this.mnuVb_Click);
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defaultToolStripMenuItem,
+            this.darkToolStripMenuItem});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(137, 30);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // defaultToolStripMenuItem
+            // 
+            this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(141, 30);
+            this.defaultToolStripMenuItem.Text = "Default";
+            // 
+            // darkToolStripMenuItem
+            // 
+            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(141, 30);
+            this.darkToolStripMenuItem.Text = "Dark";
+            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
             // 
             // mnuTools
             // 
@@ -365,7 +425,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             this.splitContainer1.Size = new System.Drawing.Size(1053, 458);
-            this.splitContainer1.SplitterDistance = 351;
+            this.splitContainer1.SplitterDistance = 242;
             this.splitContainer1.TabIndex = 2;
             // 
             // listProjDir
@@ -377,9 +437,10 @@
             this.listProjDir.Location = new System.Drawing.Point(0, 0);
             this.listProjDir.Name = "listProjDir";
             this.listProjDir.SelectedImageIndex = 0;
-            this.listProjDir.Size = new System.Drawing.Size(351, 458);
+            this.listProjDir.Size = new System.Drawing.Size(242, 458);
             this.listProjDir.TabIndex = 0;
             this.listProjDir.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseClick);
+            this.listProjDir.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseDoubleClick);
             this.listProjDir.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listProjDir_MouseClick);
             // 
             // imglistIcons
@@ -392,14 +453,12 @@
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabAddTab);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(698, 458);
+            this.tabControl.Size = new System.Drawing.Size(807, 458);
             this.tabControl.TabIndex = 1;
-            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             // 
             // tabPage1
             // 
@@ -407,15 +466,17 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(690, 425);
+            this.tabPage1.Size = new System.Drawing.Size(799, 425);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "new";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // txtCode
             // 
+            this.mnuAutoComplete.SetAutocompleteMenu(this.txtCode, this.mnuAutoComplete);
             this.txtCode.AutoScrollMinSize = new System.Drawing.Size(35, 22);
             this.txtCode.BackBrush = null;
+            this.txtCode.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txtCode.CharHeight = 22;
             this.txtCode.CharWidth = 12;
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -427,46 +488,94 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
             this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtCode.Size = new System.Drawing.Size(684, 419);
+            this.txtCode.Size = new System.Drawing.Size(793, 419);
             this.txtCode.TabIndex = 0;
             this.txtCode.Zoom = 100;
             // 
-            // tabAddTab
+            // mnuAutoComplete
             // 
-            this.tabAddTab.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabAddTab.Location = new System.Drawing.Point(4, 29);
-            this.tabAddTab.Name = "tabAddTab";
-            this.tabAddTab.Size = new System.Drawing.Size(690, 425);
-            this.tabAddTab.TabIndex = 1;
-            this.tabAddTab.Text = "+";
-            this.tabAddTab.UseVisualStyleBackColor = true;
+            this.mnuAutoComplete.AllowsTabKey = true;
+            this.mnuAutoComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.mnuAutoComplete.ImageList = null;
+            this.mnuAutoComplete.Items = new string[] {
+        "hello",
+        "abc",
+        "abcd",
+        "abcde"};
+            this.mnuAutoComplete.TargetControlWrapper = null;
             // 
             // mnuNodeContextMenuStrip
             // 
             this.mnuNodeContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newFolderToolStripMenuItem,
-            this.openInNewTabToolStripMenuItem,
-            this.renameToolStripMenuItem});
+            this.renameToolStripMenuItem,
+            this.newToolStripMenuItem,
+            this.deleteToolStripMenuItem1});
             this.mnuNodeContextMenuStrip.Name = "mnuNodeContextMenuStrip";
-            this.mnuNodeContextMenuStrip.Size = new System.Drawing.Size(223, 94);
-            // 
-            // newFolderToolStripMenuItem
-            // 
-            this.newFolderToolStripMenuItem.Name = "newFolderToolStripMenuItem";
-            this.newFolderToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
-            this.newFolderToolStripMenuItem.Text = "New Folder";
-            // 
-            // openInNewTabToolStripMenuItem
-            // 
-            this.openInNewTabToolStripMenuItem.Name = "openInNewTabToolStripMenuItem";
-            this.openInNewTabToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
-            this.openInNewTabToolStripMenuItem.Text = "Open In New Tab";
+            this.mnuNodeContextMenuStrip.Size = new System.Drawing.Size(149, 94);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(222, 30);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(148, 30);
             this.renameToolStripMenuItem.Text = "Rename";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.folderToolStripMenuItem,
+            this.fileToolStripMenuItem});
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(148, 30);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // folderToolStripMenuItem
+            // 
+            this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
+            this.folderToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
+            this.folderToolStripMenuItem.Text = "Folder";
+            this.folderToolStripMenuItem.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
+            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(148, 30);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
+            // 
+            // mnuFileNodeContextMenuStrip
+            // 
+            this.mnuFileNodeContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.renameToolStripMenuItem1});
+            this.mnuFileNodeContextMenuStrip.Name = "mnuFileNodeContextMenuStrip";
+            this.mnuFileNodeContextMenuStrip.Size = new System.Drawing.Size(232, 94);
+            // 
+            // eToolStripMenuItem
+            // 
+            this.eToolStripMenuItem.Name = "eToolStripMenuItem";
+            this.eToolStripMenuItem.Size = new System.Drawing.Size(231, 30);
+            this.eToolStripMenuItem.Text = "Run Code Analysis";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(231, 30);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // renameToolStripMenuItem1
+            // 
+            this.renameToolStripMenuItem1.Name = "renameToolStripMenuItem1";
+            this.renameToolStripMenuItem1.Size = new System.Drawing.Size(231, 30);
+            this.renameToolStripMenuItem1.Text = "Rename";
             // 
             // frmMain
             // 
@@ -479,7 +588,7 @@
             this.MainMenuStrip = this.mnuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
-            this.Text = "Lion Ware Web Studio ";
+            this.Text = "               ";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.mnuStrip.ResumeLayout(false);
             this.mnuStrip.PerformLayout();
@@ -493,6 +602,7 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
             this.mnuNodeContextMenuStrip.ResumeLayout(false);
+            this.mnuFileNodeContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,12 +646,23 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private FastColoredTextBoxNS.FastColoredTextBox txtCode;
+        private AutocompleteMenuNS.AutocompleteMenu mnuAutoComplete;
         private System.Windows.Forms.ContextMenuStrip mnuNodeContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem newFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openInNewTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabAddTab;
+        private System.Windows.Forms.ContextMenuStrip mnuFileNodeContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem eToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
     }
 }
 
