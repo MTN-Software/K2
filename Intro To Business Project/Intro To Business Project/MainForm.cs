@@ -24,8 +24,8 @@ namespace Intro_To_Business_Project
         string[] fileType = { ".htm", ".css", ".xml", ".js", ".cs", ".vb", ".php", ".sql" };
         string openedFileName;
         string projectDir;
-        TabPage tabPage;
-
+        TabPage selectedTabPage;
+        FastColoredTextBox selectedFast;
         TreeNode selectedNode;
         //TabPage tabPage;
         enum progLang
@@ -43,10 +43,10 @@ namespace Intro_To_Business_Project
             PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
             selectedNode = null;
         }
-        
+
         private void BuildAutoCompleteMenu()
         {
-            
+
             var items = new List<AutocompleteMenuNS.AutocompleteItem>();
 
             foreach (var item in snips.CSharpSnippets)
@@ -189,7 +189,7 @@ namespace Intro_To_Business_Project
 
         private void mnuOpen_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -245,7 +245,7 @@ namespace Intro_To_Business_Project
                     default:
                         break;
                 }
-                txtCode.Text = openFile.ReadToEnd();
+                fast.Text = openFile.ReadToEnd();
 
             }
             else
@@ -378,13 +378,12 @@ namespace Intro_To_Business_Project
             setStyle();
         }
 
-        private void setStyle()
+        private void setStyle(FastColoredTextBox fast)
         {
             switch (prog)
             {
                 case (int)progLang.CSharp:
                     txtCode.Language = Language.CSharp;
-                    
                     break;
                 case (int)progLang.HTML:
                     txtCode.Language = Language.HTML;
@@ -410,7 +409,7 @@ namespace Intro_To_Business_Project
                 default:
                     break;
             }
-            txtCode.Refresh();
+            fast.Refresh();
         }
         private void SaveAs()
         {
@@ -467,16 +466,16 @@ namespace Intro_To_Business_Project
             savef.ShowDialog();
             fileName = savef.FileName + tempType;
             System.IO.StreamWriter write = new System.IO.StreamWriter(fileName);
-            write.WriteLine(txtCode.Text);
+            write.WriteLine(fast.Text);
             write.Close();
         }
 
-        private void save()
+        private void save(FastColoredTextBox fast)
         {
             if (openedFileName != string.Empty)
             {
                 System.IO.StreamWriter Save = new System.IO.StreamWriter(openedFileName);
-                Save.WriteLine(txtCode.Text);
+                Save.WriteLine(fast.Text);
                 Save.Close();
             }
             else
@@ -617,7 +616,7 @@ namespace Intro_To_Business_Project
                 string newFolderName = frmNew.strName();            // retrieve the value of the textbox
                 frmNew.Dispose();                                   // free resources used by the form
 
-                DirectoryInfo dirInfo;                             
+                DirectoryInfo dirInfo;
                 string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
                 dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFolderName + @"\");    // Initialize the directoryInfo class
                 Directory.CreateDirectory(dirInfo.ToString()); // Creates a directory with the path provided by dirInfo
@@ -694,7 +693,7 @@ namespace Intro_To_Business_Project
                 string newFileName = frmNew.strName();            // retrieve the value of the textbox
                 string fileType = frmNew.comboFileTypes.SelectedItem.ToString();
                 frmNew.Dispose();                                   // free resources used by the form
-                
+
                 DirectoryInfo dirInfo;
                 string resultFile = string.Empty;
                 string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
@@ -758,8 +757,24 @@ namespace Intro_To_Business_Project
 
         private void darkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
+
+        private void mnuAddTab_Click(object sender, EventArgs e)
+        {
+            TabPage tab = new TabPage("new"); //tabControl.TabPages.Add("new");
+            FastColoredTextBox fast = new FastColoredTextBox();
+            tabControl.TabPages.Add(tab);
+            tab.Controls.Add(fast);
+            fast.Dock = DockStyle.Fill;
+            selectedFast = fast;
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
 

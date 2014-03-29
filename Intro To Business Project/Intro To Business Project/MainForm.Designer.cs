@@ -65,6 +65,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuAddTab = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listProjDir = new System.Windows.Forms.TreeView();
@@ -309,11 +310,12 @@
             this.toolStripSeparator1,
             this.mnuHelp,
             this.toolStripSeparator2,
+            this.mnuAddTab,
             this.toolStripSeparator3});
             this.mnuTools.Location = new System.Drawing.Point(0, 35);
             this.mnuTools.Name = "mnuTools";
             this.mnuTools.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.mnuTools.Size = new System.Drawing.Size(1053, 25);
+            this.mnuTools.Size = new System.Drawing.Size(1053, 32);
             this.mnuTools.TabIndex = 1;
             // 
             // mnuNew
@@ -322,7 +324,7 @@
             this.mnuNew.Image = ((System.Drawing.Image)(resources.GetObject("mnuNew.Image")));
             this.mnuNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuNew.Name = "mnuNew";
-            this.mnuNew.Size = new System.Drawing.Size(23, 22);
+            this.mnuNew.Size = new System.Drawing.Size(23, 29);
             this.mnuNew.Text = "&New";
             this.mnuNew.Click += new System.EventHandler(this.mnuNew_Click);
             // 
@@ -332,7 +334,7 @@
             this.mnuOpen.Image = ((System.Drawing.Image)(resources.GetObject("mnuOpen.Image")));
             this.mnuOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuOpen.Name = "mnuOpen";
-            this.mnuOpen.Size = new System.Drawing.Size(23, 22);
+            this.mnuOpen.Size = new System.Drawing.Size(23, 29);
             this.mnuOpen.Text = "&Open";
             this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
             // 
@@ -342,7 +344,7 @@
             this.mnuSave.Image = ((System.Drawing.Image)(resources.GetObject("mnuSave.Image")));
             this.mnuSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuSave.Name = "mnuSave";
-            this.mnuSave.Size = new System.Drawing.Size(23, 22);
+            this.mnuSave.Size = new System.Drawing.Size(23, 29);
             this.mnuSave.Text = "&Save";
             this.mnuSave.Click += new System.EventHandler(this.mnuSave_Click);
             // 
@@ -352,13 +354,13 @@
             this.mnuPrint.Image = ((System.Drawing.Image)(resources.GetObject("mnuPrint.Image")));
             this.mnuPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuPrint.Name = "mnuPrint";
-            this.mnuPrint.Size = new System.Drawing.Size(23, 22);
+            this.mnuPrint.Size = new System.Drawing.Size(23, 29);
             this.mnuPrint.Text = "&Print";
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 32);
             // 
             // mnuCut
             // 
@@ -366,7 +368,7 @@
             this.mnuCut.Image = ((System.Drawing.Image)(resources.GetObject("mnuCut.Image")));
             this.mnuCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuCut.Name = "mnuCut";
-            this.mnuCut.Size = new System.Drawing.Size(23, 22);
+            this.mnuCut.Size = new System.Drawing.Size(23, 29);
             this.mnuCut.Text = "C&ut";
             // 
             // mnuCopy
@@ -375,7 +377,7 @@
             this.mnuCopy.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopy.Image")));
             this.mnuCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuCopy.Name = "mnuCopy";
-            this.mnuCopy.Size = new System.Drawing.Size(23, 22);
+            this.mnuCopy.Size = new System.Drawing.Size(23, 29);
             this.mnuCopy.Text = "&Copy";
             // 
             // mnuPaste
@@ -384,13 +386,13 @@
             this.mnuPaste.Image = ((System.Drawing.Image)(resources.GetObject("mnuPaste.Image")));
             this.mnuPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuPaste.Name = "mnuPaste";
-            this.mnuPaste.Size = new System.Drawing.Size(23, 22);
+            this.mnuPaste.Size = new System.Drawing.Size(23, 29);
             this.mnuPaste.Text = "&Paste";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
             // mnuHelp
             // 
@@ -398,23 +400,33 @@
             this.mnuHelp.Image = ((System.Drawing.Image)(resources.GetObject("mnuHelp.Image")));
             this.mnuHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(23, 22);
+            this.mnuHelp.Size = new System.Drawing.Size(23, 29);
             this.mnuHelp.Text = "He&lp";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
+            // 
+            // mnuAddTab
+            // 
+            this.mnuAddTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.mnuAddTab.Image = ((System.Drawing.Image)(resources.GetObject("mnuAddTab.Image")));
+            this.mnuAddTab.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuAddTab.Name = "mnuAddTab";
+            this.mnuAddTab.Size = new System.Drawing.Size(84, 29);
+            this.mnuAddTab.Text = "Add Tab";
+            this.mnuAddTab.Click += new System.EventHandler(this.mnuAddTab_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 60);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 67);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -424,7 +436,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer1.Size = new System.Drawing.Size(1053, 458);
+            this.splitContainer1.Size = new System.Drawing.Size(1053, 451);
             this.splitContainer1.SplitterDistance = 242;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -437,7 +449,7 @@
             this.listProjDir.Location = new System.Drawing.Point(0, 0);
             this.listProjDir.Name = "listProjDir";
             this.listProjDir.SelectedImageIndex = 0;
-            this.listProjDir.Size = new System.Drawing.Size(242, 458);
+            this.listProjDir.Size = new System.Drawing.Size(242, 451);
             this.listProjDir.TabIndex = 0;
             this.listProjDir.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseClick);
             this.listProjDir.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listProjDir_NodeMouseDoubleClick);
@@ -457,8 +469,9 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(807, 458);
+            this.tabControl.Size = new System.Drawing.Size(807, 451);
             this.tabControl.TabIndex = 1;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -466,7 +479,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(799, 425);
+            this.tabPage1.Size = new System.Drawing.Size(799, 418);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "new";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -488,7 +501,7 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
             this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtCode.Size = new System.Drawing.Size(793, 419);
+            this.txtCode.Size = new System.Drawing.Size(793, 412);
             this.txtCode.TabIndex = 0;
             this.txtCode.Zoom = 100;
             // 
@@ -663,6 +676,7 @@
         private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton mnuAddTab;
     }
 }
 
