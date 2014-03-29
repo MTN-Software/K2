@@ -30,15 +30,30 @@ namespace Intro_To_Business_Project
         {
             CSharp = 0, VB, HTML, SQL, PHP, JS, CSS, XML
         }
+
+        Snippets snips = new Snippets();
         public frmMain()
         {
             InitializeComponent();
+            BuildAutoCompleteMenu();
             projectDir = null;
             checkProjectDirectory();
             PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
             selectedNode = null;
         }
+        
+        private void BuildAutoCompleteMenu()
+        {
+            
+            var items = new List<AutocompleteMenuNS.AutocompleteItem>();
 
+            foreach (var item in snips.CSharpSnippets)
+            {
+                items.Add(new AutocompleteMenuNS.SnippetAutocompleteItem(item) { ImageIndex = 1 });
+            }
+
+            mnuAutoComplete.SetAutocompleteItems(items);
+        }
         // Populate the Project Directory pane
         private void PopulateTreeList(string directory)
         {
