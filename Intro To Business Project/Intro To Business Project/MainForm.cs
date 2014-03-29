@@ -24,13 +24,10 @@ namespace Intro_To_Business_Project
         string[] fileType = { ".htm", ".css", ".xml", ".js", ".cs", ".vb", ".php", ".sql" };
         string openedFileName;
         string projectDir;
-<<<<<<< HEAD
         TabPage tabPage;
 
-=======
         TreeNode selectedNode;
         //TabPage tabPage;
->>>>>>> 218c68217b928d7f52a87227539e9a8c0cb93792
         enum progLang
         {
             CSharp = 0, VB, HTML, SQL, PHP, JS, CSS, XML
@@ -212,16 +209,14 @@ namespace Intro_To_Business_Project
                 fileName = openf.FileName;
                 System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
                 openedFileName = fileName;
-<<<<<<< HEAD
+
                 fast.Text = openFile.ReadToEnd();
                 FileInfo file = new FileInfo(openf.FileName);
                 string title = file.Name;
                 tabPage1.Text = title;
                 return true;
-=======
-                FileInfo file = new FileInfo(openf.FileName);
-                string title = file.Name;
-                tabPage1.Text = title;
+
+
                 switch (file.Extension)
                 {
                     case ".htm":
@@ -252,7 +247,6 @@ namespace Intro_To_Business_Project
                 }
                 txtCode.Text = openFile.ReadToEnd();
 
->>>>>>> 218c68217b928d7f52a87227539e9a8c0cb93792
             }
             else
             {
@@ -260,7 +254,7 @@ namespace Intro_To_Business_Project
                 return false;
             }
         }
-<<<<<<< HEAD
+
         private void txtCode_KeyDown(object sender, KeyEventArgs e)
         {
             // <Debug Code>
@@ -277,9 +271,6 @@ namespace Intro_To_Business_Project
             //lblCurPos.Text = "Cursor Position: " + txtCode.SelectionStart.ToString();
             // </Debug Code>
         }
-=======
-
->>>>>>> 218c68217b928d7f52a87227539e9a8c0cb93792
 
 
         private void mnuCss_Click(object sender, EventArgs e)
