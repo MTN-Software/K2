@@ -68,11 +68,9 @@
             this.mnuAddTab = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.fastColored = new Web_Studio.FastColoredTab();
             this.listProjDir = new System.Windows.Forms.TreeView();
             this.imglistIcons = new System.Windows.Forms.ImageList(this.components);
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.mnuAutoComplete = new AutocompleteMenuNS.AutocompleteMenu();
             this.mnuNodeContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,15 +82,12 @@
             this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
             this.mnuNodeContextMenuStrip.SuspendLayout();
             this.mnuFileNodeContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -432,13 +427,18 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.listProjDir);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             this.splitContainer1.Size = new System.Drawing.Size(1053, 451);
             this.splitContainer1.SplitterDistance = 242;
             this.splitContainer1.TabIndex = 2;
+            //
+            // splitContainer1.Panel2
+            //
+            this.splitContainer1.Panel2.Controls.Add(this.fastColored);
+            
+            //
+            // fastColored
+            //
+            this.fastColored.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // listProjDir
             // 
@@ -461,49 +461,6 @@
             this.imglistIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imglistIcons.Images.SetKeyName(0, "folder");
             this.imglistIcons.Images.SetKeyName(1, "file");
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 0);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(807, 451);
-            this.tabControl.TabIndex = 1;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.txtCode);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(799, 418);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "new";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // txtCode
-            // 
-            this.mnuAutoComplete.SetAutocompleteMenu(this.txtCode, this.mnuAutoComplete);
-            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(35, 22);
-            this.txtCode.BackBrush = null;
-            this.txtCode.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
-            this.txtCode.CharHeight = 22;
-            this.txtCode.CharWidth = 12;
-            this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.txtCode.IsReplaceMode = false;
-            this.txtCode.Location = new System.Drawing.Point(3, 3);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
-            this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtCode.Size = new System.Drawing.Size(793, 412);
-            this.txtCode.TabIndex = 0;
-            this.txtCode.Zoom = 100;
             // 
             // mnuAutoComplete
             // 
@@ -608,12 +565,8 @@
             this.mnuTools.ResumeLayout(false);
             this.mnuTools.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
             this.mnuNodeContextMenuStrip.ResumeLayout(false);
             this.mnuFileNodeContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -654,11 +607,9 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private Web_Studio.FastColoredTab fastColored;
         private System.Windows.Forms.TreeView listProjDir;
         private System.Windows.Forms.ImageList imglistIcons;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private FastColoredTextBoxNS.FastColoredTextBox txtCode;
         private AutocompleteMenuNS.AutocompleteMenu mnuAutoComplete;
         private System.Windows.Forms.ContextMenuStrip mnuNodeContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;

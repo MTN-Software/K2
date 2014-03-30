@@ -13,6 +13,7 @@ using FastColoredTextBoxNS;
 using AutocompleteMenuNS;
 using Intro_To_Business_Project;
 using System.IO;
+using Web_Studio;
 
 namespace Intro_To_Business_Project
 {
@@ -42,6 +43,7 @@ namespace Intro_To_Business_Project
             checkProjectDirectory();
             PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
             selectedNode = null;
+            
         }
 
         private void BuildAutoCompleteMenu()
@@ -378,7 +380,7 @@ namespace Intro_To_Business_Project
             setStyle();
         }
 
-        private void setStyle(FastColoredTextBox fast)
+        private void setStyle(/*FastColoredTextBox fast*/)
         {
             switch (prog)
             {
@@ -409,7 +411,7 @@ namespace Intro_To_Business_Project
                 default:
                     break;
             }
-            fast.Refresh();
+            //fast.Refresh();
         }
         private void SaveAs()
         {
@@ -466,16 +468,18 @@ namespace Intro_To_Business_Project
             savef.ShowDialog();
             fileName = savef.FileName + tempType;
             System.IO.StreamWriter write = new System.IO.StreamWriter(fileName);
-            write.WriteLine(fast.Text);
+            //write.WriteLine(fast.Text);
+            write.WriteLine(txtCode.Text);
             write.Close();
         }
 
-        private void save(FastColoredTextBox fast)
+        private void save(/*FastColoredTextBox fast*/)
         {
             if (openedFileName != string.Empty)
             {
                 System.IO.StreamWriter Save = new System.IO.StreamWriter(openedFileName);
-                Save.WriteLine(fast.Text);
+                //Save.WriteLine(fast.Text);
+                Save.WriteLine(txtCode.Text);
                 Save.Close();
             }
             else
