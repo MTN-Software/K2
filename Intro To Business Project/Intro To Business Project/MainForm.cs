@@ -43,6 +43,7 @@ namespace Intro_To_Business_Project
             checkProjectDirectory();
             PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
             selectedNode = null;
+            createNewTab();
             
         }
 
@@ -766,6 +767,11 @@ namespace Intro_To_Business_Project
 
         private void mnuAddTab_Click(object sender, EventArgs e)
         {
+            createNewTab();
+        }
+
+        private void createNewTab()
+        {
             TabPage tab = new TabPage("new"); //tabControl.TabPages.Add("new");
             FastColoredTextBox fast = new FastColoredTextBox();
             tabControl.TabPages.Add(tab);
@@ -777,6 +783,11 @@ namespace Intro_To_Business_Project
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabControl_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            //MessageBox.Show();
         }
 
     }

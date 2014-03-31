@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web Studio", "Intro To Business Project\Web Studio.csproj", "{7B9EB478-119D-485F-A9A0-39DE96F7B5B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastColoredTab", "FastColoredTab\FastColoredTab.csproj", "{CC20D6C1-F4F5-474C-BB7B-3CB3F87DDEA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7B9EB478-119D-485F-A9A0-39DE96F7B5B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B9EB478-119D-485F-A9A0-39DE96F7B5B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B9EB478-119D-485F-A9A0-39DE96F7B5B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC20D6C1-F4F5-474C-BB7B-3CB3F87DDEA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC20D6C1-F4F5-474C-BB7B-3CB3F87DDEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC20D6C1-F4F5-474C-BB7B-3CB3F87DDEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC20D6C1-F4F5-474C-BB7B-3CB3F87DDEA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

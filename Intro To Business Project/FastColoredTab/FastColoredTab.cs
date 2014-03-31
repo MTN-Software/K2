@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FastColoredTextBoxNS;
 
-namespace Web_Studio
+namespace FastColoredTab
 {
-    public class FastColoredTab : TabControl
+    public partial class FastColoredTab: TabControl
     {
-        //public event EventHandler OnLoad;
-        public FastColoredTextBox fastText;
+        public FastColoredTextBox fastText = new FastColoredTextBox();
         public FastColoredTab()
         {
-            fastText = new FastColoredTextBox();
+            InitializeComponent();
+            
             this.fastText.Dock = DockStyle.Fill;
         }
-
-         
     }
 }

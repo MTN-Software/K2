@@ -55,6 +55,9 @@
     <Reference Include="AutocompleteMenu">
       <HintPath>..\..\..\..\..\Downloads\AutocompleteMenuDemo\AutocompleteMenuDemo\AutocompleteMenu.dll</HintPath>
     </Reference>
+    <Reference Include="FastColoredTab">
+      <HintPath>..\FastColoredTab\bin\Release\FastColoredTab.dll</HintPath>
+    </Reference>
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\..\..\..\Downloads\FastColoredTextBox-master\FastColoredTextBox-master\Binary\FastColoredTextBox.dll</HintPath>
     </Reference>
@@ -80,9 +83,6 @@
     </Compile>
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FastColoredTab.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
