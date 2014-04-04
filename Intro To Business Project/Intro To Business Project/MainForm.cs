@@ -724,7 +724,14 @@ namespace Intro_To_Business_Project
 
         private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            createNew();
+            try
+            {
+                createNew();
+            }
+            catch(Exception ex)
+            {
+                Messagebox.show("There appears to be an error: " + ex.message, "Well this is embarressing");
+            }
         }
 
         private void darkToolStripMenuItem_Click(object sender, EventArgs e)
