@@ -19,7 +19,7 @@ namespace Intro_To_Business_Project
 
     public partial class frmMain : Form
     {
-        int prog;
+        int prog;   // This seems rather redundant, Change this to be a perameter
         string filter = "HTML (.htm)|*.htm*|CSS (.css)|*.css|XML (.xml)|*.xml|JavaScript (.js)|*.js|C Sharp (.cs)|*.cs|Visual Basic (.vb)|*.vb|PHP (.php)|*.php|SQL (.sql)|*.sql|All Files (*.*)|*.*";
         string[] fileType = { ".htm", ".css", ".xml", ".js", ".cs", ".vb", ".php", ".sql" };
         string openedFileName;
