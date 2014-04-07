@@ -1,0 +1,17 @@
+﻿<doc>
+  <brackets left="{" right="}" />
+
+  <style name="Maroon" color="Maroon" fontStyle="Bold,Italic" />
+  <style name="Blue" color="Blue" />
+  <style name="Red" color="Red" backColor="#f5f5e5" />
+  <style name="Green" color="Green" />
+
+  <rule style="Green" options="Singleline"></rule>
+  <rule style="Green"></rule>
+  <rule style="Blue"></rule>
+  <rule style="Blue"></rule>
+  <rule style="Maroon"></rule>
+  <rule style="Maroon"></rule>
+  <rule style="Red"></rule>
+  <!-- /([^\r\n{}]+)(\s*(?=[^}]*{))/g  <-- use that to highlight the elements-->
+</doc>

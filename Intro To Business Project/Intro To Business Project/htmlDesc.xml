@@ -15,4 +15,5 @@
 	<rule style="Red" options="Multiline">(?&lt;range&gt;\S+?)='[^']*'|(?&lt;range&gt;\S+)="[^"]*"|(?&lt;range&gt;\S+)=\S+</rule>
 
 	<folding start="&lt;div" finish="&lt;/div&gt;" options="IgnoreCase"/>
+  
 </doc>

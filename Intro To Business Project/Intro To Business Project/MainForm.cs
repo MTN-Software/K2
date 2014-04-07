@@ -28,6 +28,7 @@ namespace Intro_To_Business_Project
         TabPage selectedTabPage;
         FastColoredTextBox selectedFast;
         TreeNode selectedNode;
+        int newTabs;
         //TabPage tabPage;
         enum progLang
         {
@@ -43,8 +44,10 @@ namespace Intro_To_Business_Project
             checkProjectDirectory();
             PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
             selectedNode = null;
-            createNewTab();
-            
+            //createNewTab();
+            newTabs = 0;
+            selectedFast = txtCode;
+            //MessageBox.Show(selectedFast.Name);
         }
 
         private void BuildAutoCompleteMenu()
@@ -610,7 +613,7 @@ namespace Intro_To_Business_Project
 
         private void newFolder()
         {
-            if (selectedNode != null)       // If a node is selected
+            if (selectedNode != null)                               // If a node is selected
             {
                 frmNewFolderFile frmNew = new frmNewFolderFile();   // initialize the class frmNewFolderFile
                 frmNew.Text = "New Folder";                         // set the title text to "New Folder"
@@ -772,22 +775,55 @@ namespace Intro_To_Business_Project
 
         private void createNewTab()
         {
-            TabPage tab = new TabPage("new"); //tabControl.TabPages.Add("new");
+            TabPage tab;
+            if (newTabs == 0)
+            {
+                tab = new TabPage("new");
+            }
+            else
+            {
+                tab = new TabPage("new" + newTabs.ToString());
+            }
             FastColoredTextBox fast = new FastColoredTextBox();
             tabControl.TabPages.Add(tab);
             tab.Controls.Add(fast);
             fast.Dock = DockStyle.Fill;
             selectedFast = fast;
+            newTabs++;
         }
 
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void tabControl_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             //MessageBox.Show();
+        }
+
+        private void barebonesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void jQueryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            //MessageBox.Show(e.TabPageIndex.ToString());
+            selectedTabPage = tabControl.SelectedTab;
+            //MessageBox.Show(selectedTabPage.Controls[0].ToString());
+            selectedFast = tabControl.SelectedTab.Controls[0] as FastColoredTextBox;
+            try
+            {
+                MessageBox.Show(selectedFast.Name);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            
         }
 
     }
