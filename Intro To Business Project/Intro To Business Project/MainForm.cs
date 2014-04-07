@@ -182,10 +182,10 @@ namespace Intro_To_Business_Project
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            txtCode.AutoIndent = true;
-            txtCode.HighlightingRangeType = HighlightingRangeType.AllTextRange;
+            selectedFast.AutoIndent = true;
+            selectedFast.HighlightingRangeType = HighlightingRangeType.AllTextRange;
             openedFileName = string.Empty;
-            txtCode.Focus();
+            selectedFast.Focus();
         }
 
         private void mnuSave_Click(object sender, EventArgs e)
@@ -226,27 +226,27 @@ namespace Intro_To_Business_Project
                 switch (file.Extension)
                 {
                     case ".htm":
-                        txtCode.Language = Language.HTML;
+                        selectedFast.Language = Language.HTML;
                         break;
                     case ".css":
                         break;
                     case ".xml":
-                        txtCode.Language = Language.HTML;
+                        selectedFast.Language = Language.HTML;
                         break;
                     case ".js":
-                        txtCode.Language = Language.JS;
+                        selectedFast.Language = Language.JS;
                         break;
                     case ".cs":
-                        txtCode.Language = Language.CSharp;
+                        selectedFast.Language = Language.CSharp;
                         break;
                     case ".vb":
-                        txtCode.Language = Language.VB;
+                        selectedFast.Language = Language.VB;
                         break;
                     case ".php":
-                        txtCode.Language = Language.PHP;
+                        selectedFast.Language = Language.PHP;
                         break;
                     case ".sql":
-                        txtCode.Language = Language.SQL;
+                        selectedFast.Language = Language.SQL;
                         break;
                     default:
                         break;
@@ -389,25 +389,25 @@ namespace Intro_To_Business_Project
             switch (prog)
             {
                 case (int)progLang.CSharp:
-                    txtCode.Language = Language.CSharp;
+                    selectedFast.Language = Language.CSharp;
                     break;
                 case (int)progLang.HTML:
-                    txtCode.Language = Language.HTML;
+                    selectedFast.Language = Language.HTML;
                     break;
                 case (int)progLang.JS:
-                    txtCode.Language = Language.JS;
+                    selectedFast.Language = Language.JS;
                     break;
                 case (int)progLang.PHP:
-                    txtCode.Language = Language.PHP;
+                    selectedFast.Language = Language.PHP;
                     break;
                 case (int)progLang.SQL:
-                    txtCode.Language = Language.SQL;
+                    selectedFast.Language = Language.SQL;
                     break;
                 case (int)progLang.VB:
-                    txtCode.Language = Language.VB;
+                    selectedFast.Language = Language.VB;
                     break;
                 case (int)progLang.XML:
-                    txtCode.Language = Language.HTML;   // Placeholder
+                    selectedFast.Language = Language.HTML;   // Placeholder
                     break;
                 case (int)progLang.CSS:
                     //TODO
@@ -473,7 +473,7 @@ namespace Intro_To_Business_Project
             fileName = savef.FileName + tempType;
             System.IO.StreamWriter write = new System.IO.StreamWriter(fileName);
             //write.WriteLine(fast.Text);
-            write.WriteLine(txtCode.Text);
+            write.WriteLine(selectedFast.Text);
             write.Close();
         }
 
@@ -483,7 +483,7 @@ namespace Intro_To_Business_Project
             {
                 System.IO.StreamWriter Save = new System.IO.StreamWriter(openedFileName);
                 //Save.WriteLine(fast.Text);
-                Save.WriteLine(txtCode.Text);
+                Save.WriteLine(selectedFast.Text);
                 Save.Close();
             }
             else
@@ -508,13 +508,13 @@ namespace Intro_To_Business_Project
             if (dia == DialogResult.Yes)
             {
                 save();
-                txtCode.Text = string.Empty;
+                selectedFast.Text = string.Empty;
                 openedFileName = string.Empty;
                 return true;
             }
             else if (dia == DialogResult.No)
             {
-                txtCode.Text = string.Empty;
+                selectedFast.Text = string.Empty;
                 openedFileName = string.Empty;
                 return true;
             }
@@ -645,36 +645,36 @@ namespace Intro_To_Business_Project
                     openedFileName = fileName;
                     FileInfo file = new FileInfo(fileName);
                     string title = file.Name;
-                    tabPage1.Text = title;
+                    tabControl.SelectedTab.Text = title;
                     switch (file.Extension)
                     {
                         case ".htm":
-                            txtCode.Language = Language.HTML;
+                            selectedFast.Language = Language.HTML;
                             break;
                         case ".css":
                             break;
                         case ".xml":
-                            txtCode.Language = Language.HTML;
+                            selectedFast.Language = Language.HTML;
                             break;
                         case ".js":
-                            txtCode.Language = Language.JS;
+                            selectedFast.Language = Language.JS;
                             break;
                         case ".cs":
-                            txtCode.Language = Language.CSharp;
+                            selectedFast.Language = Language.CSharp;
                             break;
                         case ".vb":
-                            txtCode.Language = Language.VB;
+                            selectedFast.Language = Language.VB;
                             break;
                         case ".php":
-                            txtCode.Language = Language.PHP;
+                            selectedFast.Language = Language.PHP;
                             break;
                         case ".sql":
-                            txtCode.Language = Language.SQL;
+                            selectedFast.Language = Language.SQL;
                             break;
                         default:
                             break;
                     }
-                    txtCode.Text = openFile.ReadToEnd();
+                    selectedFast.Text = openFile.ReadToEnd();
                     openFile.Dispose();
                 }
                 catch (Exception ex)
@@ -800,12 +800,18 @@ namespace Intro_To_Business_Project
 
         private void barebonesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            StreamReader reader = new StreamReader(@"..\..\Snippets\HTML\Barebones.htm");
+            selectedFast.Language = Language.HTML;
+            selectedFast.Text = reader.ReadToEnd();
+            reader.Dispose();
         }
 
         private void jQueryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            StreamReader reader = new StreamReader(@"..\..\Snippets\HTML\jQuery.htm");
+            selectedFast.Language = Language.HTML;
+            selectedFast.Text = reader.ReadToEnd();
+            reader.Dispose();
         }
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)
@@ -816,7 +822,7 @@ namespace Intro_To_Business_Project
             selectedFast = tabControl.SelectedTab.Controls[0] as FastColoredTextBox;
             try
             {
-                MessageBox.Show(selectedFast.Name);
+                //MessageBox.Show(selectedFast.Name);
             }
             catch (Exception ex)
             {
