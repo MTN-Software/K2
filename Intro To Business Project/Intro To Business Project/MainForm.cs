@@ -55,7 +55,7 @@ namespace Intro_To_Business_Project
 
             var items = new List<AutocompleteMenuNS.AutocompleteItem>();
 
-            foreach (var item in snips.CSharpSnippets)
+            foreach (var item in snips.HTMLSnippets)
             {
                 items.Add(new AutocompleteMenuNS.SnippetAutocompleteItem(item) { ImageIndex = 1 });
             }
@@ -195,7 +195,7 @@ namespace Intro_To_Business_Project
 
         private void mnuOpen_Click(object sender, EventArgs e)
         {
-
+            open(selectedFast);
 
         }
 
@@ -216,11 +216,12 @@ namespace Intro_To_Business_Project
                 System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);
                 openedFileName = fileName;
 
-                fast.Text = openFile.ReadToEnd();
+                //fast.Text = openFile.ReadToEnd();
                 FileInfo file = new FileInfo(openf.FileName);
                 string title = file.Name;
-                tabPage1.Text = title;
-                return true;
+                selectedTabPage.Text = title;
+                
+                //return true;
 
 
                 switch (file.Extension)
@@ -251,8 +252,9 @@ namespace Intro_To_Business_Project
                     default:
                         break;
                 }
-                fast.Text = openFile.ReadToEnd();
-
+                selectedFast.Text = openFile.ReadToEnd();
+                openFile.Dispose();
+                return true;
             }
             else
             {

@@ -36,7 +36,7 @@ namespace Intro_To_Business_Project
 
         public string[] HTMLSnippets =
         {
-            "<a ^></a>",
+            @"<a ^></a>",
             "<abbr>^</abbr>",
             "<acronym>^</acronym>",
             "<address>^</address>",
