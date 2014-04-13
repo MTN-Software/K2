@@ -730,7 +730,7 @@ namespace Intro_To_Business_Project
 
                 DirectoryInfo dirInfo;
                 string resultFile = string.Empty;
-                string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
+                string dir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User); // Create a string with a value of the path to the project directory
                 dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFileName);    // Initialize the directoryInfo class
                 resultFile = dirInfo + fileType;
                 File.CreateText(resultFile);   // Creates a file with the path provided by dirInfo
