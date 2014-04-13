@@ -130,7 +130,9 @@ namespace Intro_To_Business_Project
             // Check if the environmental variable "projDir" exists and if it does, set projectDir equal to it
             if (Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User) != null)
             {
-                projectDir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User);
+                
+                string Dir = Environment.GetEnvironmentVariable("projDir",EnvironmentVariableTarget.User);
+                projectDir = Dir;
             }
 
             if (!Directory.Exists(projectDir))  // Check if the directory projectDir does not exist
@@ -145,30 +147,50 @@ namespace Intro_To_Business_Project
                 }
                 else  // If the user does not want to create it, ask if they want to in a different directory
                 {
-                    DialogResult diffDir = MessageBox.Show("Would you like to create a workspace in a different directory?", "Create Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    if (diffDir == DialogResult.Yes)    // If so, ask them what directory, then set "projDir" equal to that directory
-                    {
-                        FolderBrowserDialog folderDir = new FolderBrowserDialog();
-                        folderDir.ShowNewFolderButton = true;
-                        folderDir.Description = "Where do you want your workspace directory to be?";
-                        folderDir.RootFolder = Environment.SpecialFolder.MyDocuments;
-                        folderDir.ShowDialog();
-                        string newDir = folderDir.SelectedPath + @"\Web Studio\";
-                        Directory.CreateDirectory(newDir);
-                        Environment.SetEnvironmentVariable("projDir", newDir, EnvironmentVariableTarget.User);
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return createProjDir();
                 }
             }
             else
             {
+                Environment.SetEnvironmentVariable("projDir", projectDir, EnvironmentVariableTarget.User);
                 return true;
             }
 
+        }
+
+        private bool createProjDir()
+        {
+            
+            DialogResult diffDir = MessageBox.Show("Would you like to create a workspace in a different directory?", "Create Directory", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            if (diffDir == DialogResult.Yes)    // If so, ask them what directory, then set "projDir" equal to that directory
+            {
+                FolderBrowserDialog folderDir = new FolderBrowserDialog();
+                folderDir.ShowNewFolderButton = true;
+                folderDir.Description = "Where do you want your workspace directory to be?";
+                folderDir.RootFolder = Environment.SpecialFolder.MyComputer;
+                folderDir.ShowDialog();
+                string foldir = folderDir.SelectedPath;
+                bool contain = folderDir.SelectedPath.Contains("\\Web Studio");
+                bool containDir = folderDir.SelectedPath.Contains("\\Web Studio\\");
+                if (contain || containDir)
+                {
+                    string newDir = folderDir.SelectedPath;
+                    Environment.SetEnvironmentVariable("projDir", newDir, EnvironmentVariableTarget.User);
+                }
+                else
+                {
+                    string newDir = folderDir.SelectedPath + @"\Web Studio\";
+                    Directory.CreateDirectory(newDir);
+                    Environment.SetEnvironmentVariable("projDir", newDir, EnvironmentVariableTarget.User);
+                }
+                
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
         private void mnuExit_Click(object sender, EventArgs e)
         {
@@ -621,14 +643,16 @@ namespace Intro_To_Business_Project
                 frmNew.Text = "New Folder";                         // set the title text to "New Folder"
                 frmNew.lblNewFolderFile.Text = "New Folder Name: "; // set the label to "New Folder Name: "
                 frmNew.lblFileType.Enabled = false;
+                frmNew.lblFileType.Visible = false;
                 frmNew.comboFileTypes.Enabled = false;
+                frmNew.comboFileTypes.Visible = false;
                 frmNew.ShowDialog();                                // show the form as a dialog box
                 string newFolderName = frmNew.strName();            // retrieve the value of the textbox
                 frmNew.Dispose();                                   // free resources used by the form
 
                 DirectoryInfo dirInfo;
-                string dir = Environment.GetEnvironmentVariable("projDir"); // Create a string with a value of the path to the project directory
-                dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFolderName + @"\");    // Initialize the directoryInfo class
+                string dir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User); // Create a string with a value of the path to the project directory
+                dirInfo = new DirectoryInfo(dir + @"\..\" + selectedNode.FullPath + @"\" + newFolderName + @"\");    // Initialize the directoryInfo class
                 Directory.CreateDirectory(dirInfo.ToString()); // Creates a directory with the path provided by dirInfo
                 listProjDir.Nodes.Clear();  // Clears tree view
                 PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));    // Repopulates tree view with updated directory information
@@ -724,9 +748,9 @@ namespace Intro_To_Business_Project
         {
             if (selectedNode != null)
             {
-                string getProjectDir = Environment.GetEnvironmentVariable("projDir");
+                string getProjectDir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User);
                 string nodeToDelete = selectedNode.FullPath;
-                string getFolderDir = getProjectDir + @"..\" + nodeToDelete;
+                string getFolderDir = getProjectDir + @"\..\" + nodeToDelete;
                 DialogResult confirm = MessageBox.Show("Are you sure you want to delete this? It will be gone forever (i.e. a long time)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 if (confirm == DialogResult.Yes)
                 {
@@ -832,6 +856,58 @@ namespace Intro_To_Business_Project
                 throw;
             }
             
+        }
+
+        private void mnuCut_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(selectedFast.SelectedText, TextDataFormat.Text);
+            selectedFast.SelectedText = "";
+        }
+
+        private void mnuCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(selectedFast.SelectedText, TextDataFormat.Text);
+        }
+
+        private void mnuPaste_Click(object sender, EventArgs e)
+        {
+            selectedFast.SelectedText = Clipboard.GetText();
+        }
+
+        private void mnuPrint_Click(object sender, EventArgs e)
+        {
+            var print = new PrintDialog();
+            print.AllowSelection = true;
+            print.AllowSomePages = true;
+            print.AllowCurrentPage = true;
+            print.AllowPrintToFile = true;
+            print.ShowHelp = true;
+            print.ShowNetwork = true;
+            var result = print.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                if (print.PrintToFile)
+                {
+                    MessageBox.Show("Nothing happened","hmm");
+                }
+                else
+                {
+                    //print.Document.Print();
+                    MessageBox.Show("Nothing happened", "hmm");
+                }
+            }
+            else if (result == System.Windows.Forms.DialogResult.Cancel)
+            {
+                
+            }
+        }
+
+        private void mnuSwitchProjDir_Click(object sender, EventArgs e)
+        {
+            if(createProjDir())
+            {
+
+            }
         }
 
     }

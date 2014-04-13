@@ -90,6 +90,9 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAddTabItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSwitchProjDir = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStrip.SuspendLayout();
             this.mnuTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -107,6 +110,7 @@
             // 
             this.mnuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
+            this.mnuEdit,
             this.mnuView,
             this.snippetsToolStripMenuItem});
             this.mnuStrip.Location = new System.Drawing.Point(0, 0);
@@ -150,7 +154,7 @@
             // 
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(174, 30);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(198, 30);
             this.fileToolStripMenuItem1.Text = "File";
             this.fileToolStripMenuItem1.Click += new System.EventHandler(this.fileToolStripMenuItem1_Click);
             // 
@@ -214,7 +218,7 @@
             this.mnuCsharp,
             this.mnuVb});
             this.mnuSyntax.Name = "mnuSyntax";
-            this.mnuSyntax.Size = new System.Drawing.Size(137, 30);
+            this.mnuSyntax.Size = new System.Drawing.Size(198, 30);
             this.mnuSyntax.Text = "Syntax";
             // 
             // mnuHtml
@@ -287,7 +291,7 @@
             this.defaultToolStripMenuItem,
             this.darkToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(137, 30);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // defaultToolStripMenuItem
@@ -318,27 +322,31 @@
             this.barebonesToolStripMenuItem,
             this.jQueryToolStripMenuItem});
             this.hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
-            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.hTMLToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.hTMLToolStripMenuItem.Text = "HTML";
             // 
             // barebonesToolStripMenuItem
             // 
             this.barebonesToolStripMenuItem.Name = "barebonesToolStripMenuItem";
-            this.barebonesToolStripMenuItem.Size = new System.Drawing.Size(167, 30);
+            this.barebonesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.B)));
+            this.barebonesToolStripMenuItem.Size = new System.Drawing.Size(276, 30);
             this.barebonesToolStripMenuItem.Text = "Barebones";
             this.barebonesToolStripMenuItem.Click += new System.EventHandler(this.barebonesToolStripMenuItem_Click);
             // 
             // jQueryToolStripMenuItem
             // 
             this.jQueryToolStripMenuItem.Name = "jQueryToolStripMenuItem";
-            this.jQueryToolStripMenuItem.Size = new System.Drawing.Size(167, 30);
+            this.jQueryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.J)));
+            this.jQueryToolStripMenuItem.Size = new System.Drawing.Size(276, 30);
             this.jQueryToolStripMenuItem.Text = "jQuery";
             this.jQueryToolStripMenuItem.Click += new System.EventHandler(this.jQueryToolStripMenuItem_Click);
             // 
             // javascriptToolStripMenuItem
             // 
             this.javascriptToolStripMenuItem.Name = "javascriptToolStripMenuItem";
-            this.javascriptToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.javascriptToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.javascriptToolStripMenuItem.Text = "Javascript";
             // 
             // mnuTools
@@ -401,6 +409,7 @@
             this.mnuPrint.Name = "mnuPrint";
             this.mnuPrint.Size = new System.Drawing.Size(23, 29);
             this.mnuPrint.Text = "&Print";
+            this.mnuPrint.Click += new System.EventHandler(this.mnuPrint_Click);
             // 
             // toolStripSeparator
             // 
@@ -415,6 +424,7 @@
             this.mnuCut.Name = "mnuCut";
             this.mnuCut.Size = new System.Drawing.Size(23, 29);
             this.mnuCut.Text = "C&ut";
+            this.mnuCut.Click += new System.EventHandler(this.mnuCut_Click);
             // 
             // mnuCopy
             // 
@@ -424,6 +434,7 @@
             this.mnuCopy.Name = "mnuCopy";
             this.mnuCopy.Size = new System.Drawing.Size(23, 29);
             this.mnuCopy.Text = "&Copy";
+            this.mnuCopy.Click += new System.EventHandler(this.mnuCopy_Click);
             // 
             // mnuPaste
             // 
@@ -433,6 +444,7 @@
             this.mnuPaste.Name = "mnuPaste";
             this.mnuPaste.Size = new System.Drawing.Size(23, 29);
             this.mnuPaste.Text = "&Paste";
+            this.mnuPaste.Click += new System.EventHandler(this.mnuPaste_Click);
             // 
             // toolStripSeparator1
             // 
@@ -540,6 +552,7 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
             this.txtCode.Location = new System.Drawing.Point(3, 3);
             this.txtCode.Name = "txtCode";
@@ -643,6 +656,32 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAddTabItem,
+            this.mnuSwitchProjDir});
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(54, 29);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuAddTabItem
+            // 
+            this.mnuAddTabItem.Name = "mnuAddTabItem";
+            this.mnuAddTabItem.ShortcutKeyDisplayString = "Ctrl+Shift+=";
+            this.mnuAddTabItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Oemplus)));
+            this.mnuAddTabItem.Size = new System.Drawing.Size(271, 30);
+            this.mnuAddTabItem.Text = "Add Tab";
+            this.mnuAddTabItem.Click += new System.EventHandler(this.mnuAddTab_Click);
+            // 
+            // mnuSwitchProjDir
+            // 
+            this.mnuSwitchProjDir.Name = "mnuSwitchProjDir";
+            this.mnuSwitchProjDir.Size = new System.Drawing.Size(271, 30);
+            this.mnuSwitchProjDir.Text = "Switch Project Directory";
+            this.mnuSwitchProjDir.Click += new System.EventHandler(this.mnuSwitchProjDir_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -736,6 +775,9 @@
         private System.Windows.Forms.ToolStripMenuItem barebonesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem jQueryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem javascriptToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddTabItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuSwitchProjDir;
     }
 }
 
