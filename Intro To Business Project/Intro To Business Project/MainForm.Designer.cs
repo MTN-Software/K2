@@ -536,10 +536,10 @@
             this.tabPage1.Controls.Add(this.txtCode);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(0);
             this.tabPage1.Size = new System.Drawing.Size(799, 418);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "new";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // txtCode
@@ -547,6 +547,7 @@
             this.mnuAutoComplete.SetAutocompleteMenu(this.txtCode, null);
             this.txtCode.AutoScrollMinSize = new System.Drawing.Size(35, 22);
             this.txtCode.BackBrush = null;
+            this.txtCode.ChangedLineColor = System.Drawing.Color.LemonChiffon;
             this.txtCode.CharHeight = 22;
             this.txtCode.CharWidth = 12;
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -554,7 +555,7 @@
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.IsReplaceMode = false;
-            this.txtCode.Location = new System.Drawing.Point(3, 3);
+            this.txtCode.Location = new System.Drawing.Point(0, 0);
             this.txtCode.Name = "txtCode";
             this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
             this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));

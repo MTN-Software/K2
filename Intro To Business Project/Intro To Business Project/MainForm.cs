@@ -45,7 +45,7 @@ namespace Intro_To_Business_Project
             PopulateTreeList(Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User));
             selectedNode = null;
             //createNewTab();
-            newTabs = 0;
+            newTabs = 1;
             selectedFast = txtCode;
             //MessageBox.Show(selectedFast.Name);
         }
@@ -73,6 +73,7 @@ namespace Intro_To_Business_Project
                 rootNode = new TreeNode(info.Name);
                 rootNode.Tag = info;
                 GetDirectories(info.GetDirectories(), rootNode);
+                GetFiles(info, rootNode);
                 listProjDir.Nodes.Add(rootNode);
             }
         }
@@ -242,7 +243,7 @@ namespace Intro_To_Business_Project
                 FileInfo file = new FileInfo(openf.FileName);
                 string title = file.Name;
                 selectedTabPage.Text = title;
-                
+                //selectedTabPage.Name = title;
                 //return true;
 
 
@@ -666,42 +667,71 @@ namespace Intro_To_Business_Project
                 try
                 {
                     openedFileName = string.Empty;
-                    string fileName = Environment.GetEnvironmentVariable("projDir") + @"..\" + e.Node.FullPath;
+                    string fileName = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User) + @"\..\" + e.Node.FullPath;
                     System.IO.StreamReader openFile = new System.IO.StreamReader(fileName);     // fix this
                     openedFileName = fileName;
                     FileInfo file = new FileInfo(fileName);
                     string title = file.Name;
-                    tabControl.SelectedTab.Text = title;
-                    switch (file.Extension)
-                    {
-                        case ".htm":
-                            selectedFast.Language = Language.HTML;
-                            break;
-                        case ".css":
-                            break;
-                        case ".xml":
-                            selectedFast.Language = Language.HTML;
-                            break;
-                        case ".js":
-                            selectedFast.Language = Language.JS;
-                            break;
-                        case ".cs":
-                            selectedFast.Language = Language.CSharp;
-                            break;
-                        case ".vb":
-                            selectedFast.Language = Language.VB;
-                            break;
-                        case ".php":
-                            selectedFast.Language = Language.PHP;
-                            break;
-                        case ".sql":
-                            selectedFast.Language = Language.SQL;
-                            break;
-                        default:
-                            break;
-                    }
-                    selectedFast.Text = openFile.ReadToEnd();
-                    openFile.Dispose();
+                    //if (!pageExists(title))
+                   // {
+                        // Create New Tab page
+                        TabPage tab;
+                        if (newTabs == 0)
+                        {
+                            tab = new TabPage("new");
+                        }
+                        else
+                        {
+                            tab = new TabPage("new" + newTabs.ToString());
+                        }
+                        FastColoredTextBox fast = new FastColoredTextBox();
+                        fast.ChangedLineColor = Color.LemonChiffon;
+                        tabControl.TabPages.Add(tab);
+                        tab.Controls.Add(fast);
+                        fast.Dock = DockStyle.Fill;
+                        selectedFast = fast;
+                        selectedTabPage = tab;
+                        newTabs++;
+                        
+                        tab.Text = title;
+                        switch (file.Extension)
+                        {
+                            case ".htm":
+                                selectedFast.Language = Language.HTML;
+                                break;
+                            case ".css":
+                                break;
+                            case ".xml":
+                                selectedFast.Language = Language.HTML;
+                                break;
+                            case ".js":
+                                selectedFast.Language = Language.JS;
+                                break;
+                            case ".cs":
+                                selectedFast.Language = Language.CSharp;
+                                break;
+                            case ".vb":
+                                selectedFast.Language = Language.VB;
+                                break;
+                            case ".php":
+                                selectedFast.Language = Language.PHP;
+                                break;
+                            case ".sql":
+                                selectedFast.Language = Language.SQL;
+                                break;
+                            default:
+                                break;
+                        }
+                        fast.Text = openFile.ReadToEnd();
+                        openFile.Dispose();
+                    //}
+                    //else
+                    //{
+                    //    tabControl.SelectTab(title);
+                    //}
+                    // Open file in the newly created tab
+                    
+                    
                 }
                 catch (Exception ex)
                 {
@@ -709,6 +739,18 @@ namespace Intro_To_Business_Project
 
                 }
             }
+        }
+
+        private bool pageExists(string tabName)
+        {
+            /*
+            TabPage[] tabs;
+            for (int tabPage = 0; tabPage < tabControl.TabPages.Count; tabPage++)
+            {
+                tabControl.TabPages.t
+            }*/
+            return true;
+            //throw new NotImplementedException();
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -731,7 +773,7 @@ namespace Intro_To_Business_Project
                 DirectoryInfo dirInfo;
                 string resultFile = string.Empty;
                 string dir = Environment.GetEnvironmentVariable("projDir", EnvironmentVariableTarget.User); // Create a string with a value of the path to the project directory
-                dirInfo = new DirectoryInfo(dir + @"..\" + selectedNode.FullPath + @"\" + newFileName);    // Initialize the directoryInfo class
+                dirInfo = new DirectoryInfo(dir + @"\..\" + selectedNode.FullPath + @"\" + newFileName);    // Initialize the directoryInfo class
                 resultFile = dirInfo + fileType;
                 File.CreateText(resultFile);   // Creates a file with the path provided by dirInfo
                 listProjDir.Nodes.Clear();  // Clears tree view
@@ -811,6 +853,7 @@ namespace Intro_To_Business_Project
                 tab = new TabPage("new" + newTabs.ToString());
             }
             FastColoredTextBox fast = new FastColoredTextBox();
+            fast.ChangedLineColor = Color.LemonChiffon;
             tabControl.TabPages.Add(tab);
             tab.Controls.Add(fast);
             fast.Dock = DockStyle.Fill;
